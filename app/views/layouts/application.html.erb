@@ -27,21 +27,19 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <%= stylesheet_link_tag 'application' %>
+
   </head>
 
   <body style= "padding-top: 100px">
-    <%= yield %>
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
 
-          <a class="navbar-brand" href="#">gCamp</a>
+          <font size= "6"><%= link_to "gCamp", root_path %> </font>
         </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-                  <div class="form-group">
-
-            </div>
+      </div>
+    </div>
             <div class="form-group">
 
             </div>
@@ -51,66 +49,22 @@
       </div>
     </div>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
+
     <div class= "container">
+      <%= yield %>
       <div class="jumbotron" style="padding-left:450px">
-      <div class="container gCamp">
-        <h1>gCamp</h1>
-        <p>Your life, organized</p>
-       </div>
-      </div>
-    </div>
-
-    <div class="container ">
-      <!-- Example row of columns -->
-        <div class="col-md-4">
-          <img class="img-responsive" src ="https://farm8.staticflickr.com/7378/9325995752_e4b4d0044a_m.jpg"/>
-          <div class="panel-heading">
-            <h2 class="panel-title" style="padding-left:128px">Tasks</h2>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                Grouped by projects and lists. Just the way you like'em
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-4">
-          <img class= "img-responsive" src ="https://farm9.staticflickr.com/8538/8864977481_713b7cbda5_m.jpg"/>
-          <div class="panel-heading">
-            <h2 class="panel-title" style="padding-left:119px">Documents</h2>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <ul>
-                  <li>Upload</li>
-                  <li>Comment</li>
-                  <li>Revise</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <img class= "img-responsive" src ="https://farm8.staticflickr.com/7365/8785432136_2f72554293_m.jpg"/>
-          <div class="panel-heading">
-            <h2 class="panel-title" style="padding-left:119px">Comments</h2>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <ul>
-                  <li>Comment on tasks and documents</li>
-                  <li>Get email notifications</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div
-
-
 
 
       <footer>
+        <div class= "navbar navbar-inverse" role="navigation">
+          <div class= "container">
+        <font size ="5"><%= link_to "About", about_path %> </font>
+        <font size ="5"><%= link_to "Terms", terms_path%> </font>
+        <div class= "navbar-header">
+        </div>
+      </div>
+    </div>
+
         <p>&copy; Company 2014</p>
       </footer>
     </div> <!-- /container -->

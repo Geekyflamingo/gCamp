@@ -22,7 +22,11 @@
   width: 100%;
 }
 
-h1{margin-bottom: 45px;}
+h1{margin-bottom: 45px;
+font-family:Courier}
+
+p{font-family:Courier;
+font-size:20px}
 
 h2{
 background:#92C4F0;
@@ -30,4 +34,8 @@ font-family: Delicious, Courier}
 
 .panel{
   font-family: Courier
+}
+
+footer{
+  font-family:Courier
 }
