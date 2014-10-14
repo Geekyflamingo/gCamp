@@ -15,23 +15,28 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 .navbar {
   background-color:#fd7d0b;
-  font-family:Delicious, Courier}
-  
+  font-family:Courier}
+
+.gCamp{
+  background-color:#ede3d5;
+}
+
 .img-responsive {
   width: 100%;
 }
 
 h1{margin-bottom: 45px;
-font-family:Courier}
+font-family:Courier }
 
 p{font-family:Courier;
 font-size:20px}
 
 h2{
 background:#92C4F0;
-font-family: Delicious, Courier}
+font-family: Courier}
 
 .panel{
   font-family: Courier
