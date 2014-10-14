@@ -48,17 +48,15 @@
     </div>
   </div>
 </div>
-  <% quotes=[ "People who think they know everything are a great annoyance to those of us who do. -Issac Asimov",
-            "If you could kick the person in the pants responsible for most of your trouble, you wouldn't sit for a month. -Theodore Roosevelt",
-            "Get your facts first, then you can distort them as you please. -Mark Twain"] %>
-    <ul>
-       <% quotes.each do |quote| %>
-      <li>
-        <h3>
-          <%=quote%>
-        </h3>
-      </li>
-        <%end%>
-    </ul>
+  <% quotes=[["People who think they know everything are a great annoyance to those of us who do.", "Issac Asimov"],
+            ["If you could kick the person in the pants responsible for most of your trouble, you wouldn't sit for a month.", "Theodore Roosevelt"],
+            ["Get your facts first, then you can distort them as you please.","Mark Twain"]] %>
+
+    <% quotes.each do |quote| %>
+        <p>
+          <%=quote [0] %>
+        <p>
+            <p><em> - <%=quote [1] %></em><p>
+    <%end%>
 
 </div>
