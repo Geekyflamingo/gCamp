@@ -39,9 +39,18 @@ background:#92C4F0;
 font-family: Courier}
 
 .panel{
-  font-family: Courier
+  font-family: Courier;
 }
 
 footer{
-  font-family:Courier
+  font-family:Courier;
+  text-align:justify;
+}
+
+blockquote{
+  border-left: 0px;
+}
+
+cite{
+  font-family: Courier;
 }

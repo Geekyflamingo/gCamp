@@ -55,10 +55,10 @@
             ["Get your facts first, then you can distort them as you please.","Mark Twain"]] %>
 
     <% quotes.each do |quote| %>
-        <p>
-          <%=quote [0] %>
-        <p>
-            <p><em> - <%=quote [1] %></em><p>
+      <blockquote>
+        <p><%=quote [0] %><p>
+        <footer><cite><%=quote [1] %></cite></footer>
+      </blockquote>
     <%end%>
 
 </div>

@@ -52,21 +52,13 @@
 
     <div class= "container">
       <%= yield %>
-      <div class="jumbotron">
-<hr>
 
+<hr>
       <footer>
-        <div class= "navbar navbar-inverse" role="navigation">
-          <div class= "container">
-        <font size ="5"><%= link_to "About", about_path %> </font>
-        <font size ="5"><%= link_to "Terms", terms_path%> </font>
-        <div class= "navbar-header">
-        </div>
-      </div>
-    </div>
+        <u class="text-left" styel="font-size:5; padding-right:7.5px;"><%= link_to "About", about_path %> </u>
+        <u class="text-left" style="font-size:5; padding-left:7.5px; border-left:1px solid black"><%= link_to "Terms", terms_path%> </u>
         <p>&copy; Company 2014</p>
       </footer>
-    </div>
   </div>
   <!-- /container -->
 
