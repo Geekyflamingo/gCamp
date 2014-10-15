@@ -24,8 +24,13 @@
   background-color:#ede3d5;
 }
 
-.img-responsive {
+.image-responsive {
   width: 100%;
+}
+
+.image-crop{
+  height:220px;
+  overflow:hidden
 }
 
 h1{margin-bottom: 45px;
@@ -54,4 +59,11 @@ blockquote{
 
 cite{
   font-family: Courier;
+}
+
+.panel{
+  height: 150px;
+}
+.panel-heading{
+  background-color: #92C4F0 !important;
 }
