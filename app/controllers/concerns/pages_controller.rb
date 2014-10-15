@@ -8,7 +8,7 @@ class PagesController <ApplicationController
     quote1.author = "Issac Asimov"
 
     quote2 = Quote.new
-    quote2.text = "If you could kick the person in the pants responsible for most of your trouble, you wouldn't sit for a month."
+    quote2.text = "If you could kick the person in the pants responsible for most of your trouble, you                wouldn't sit for a month."
     quote2.author = "Theodore Roosevelt"
 
     quote3 = Quote.new
@@ -34,7 +34,7 @@ class PagesController <ApplicationController
   faq3.answer = "gCamp is a work in progress. That being said, it should be fully functional by December 2014. Functional, but our developers are going to continue to improve the sight for the foreseeable future. Check in daily for new features and awesome functionality. It's going to blow your mind. Organization is only (well, will only) be a click away. Amazing!"
 
   @faqs = [ faq1, faq2, faq3]
-   
+
   end
 
 
