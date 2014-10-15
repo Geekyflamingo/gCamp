@@ -53,8 +53,8 @@
 
     <% @quotes.each do |quote| %>
       <blockquote>
-        <p><%=quote [0] %><p>
-        <footer><cite><%=quote [1] %></cite></footer>
+        <p><%= quote.text %><p>
+        <footer><cite><%= quote.author%></cite></footer>
       </blockquote>
     <%end%>
 
