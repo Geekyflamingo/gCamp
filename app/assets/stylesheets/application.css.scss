@@ -16,8 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body {
-background: url(background_image.jpg) no-repeat center center fixed;
+.full {
+background-image: url(image-path('background_image.jpg')); //no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
