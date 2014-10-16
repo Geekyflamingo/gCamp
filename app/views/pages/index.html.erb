@@ -60,11 +60,14 @@
       </div>
     </div>
   </div>
-</div>
+
 
     <% @quotes.each do |quote| %>
-      <blockquote>
-        <p><%= quote.text %><p>
-        <footer><cite><%= quote.author%></cite></footer>
-      </blockquote>
+      <div class= "text-faq">
+        <blockquote>
+          <p><%= quote.text %><p>
+          <footer><cite><%= quote.author%></cite></footer>
+        </blockquote>
+      </div>
     <%end%>
+</div>

@@ -16,6 +16,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+background: url(background_image.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
 .navbar {
   background-color:#fd7d0b;
   font-family:Courier}
@@ -33,15 +41,20 @@
   overflow:hidden
 }
 
-h1{margin-bottom: 45px;
-font-family:Courier }
+h1{
+  margin-bottom: 45px;
+  font-family:Courier;
+  }
 
-p{font-family:Courier;
-font-size:20px}
+p{
+  font-family:Courier;
+font-size:20px
+}
 
 h2{
 background:#92C4F0;
-font-family: Courier}
+font-family: Courier
+}
 
 .panel{
   font-family: Courier;
@@ -64,6 +77,30 @@ cite{
 .panel{
   height: 150px;
 }
+
 .panel-heading{
   background-color: #92C4F0 !important;
+}
+
+.panel-default{
+  background-color:#eeeeee !important;
+}
+
+.panel-body{
+  background-color:#eeeeee !important;
+}
+
+.text-center{
+  background-color:#eeeeee;
+  width:700px;
+  height:670px;
+}
+
+.text-faq{
+  background-color:#eeeeee;
+
+}
+
+.text-terms{
+  background-color:#eeeeee;
 }
