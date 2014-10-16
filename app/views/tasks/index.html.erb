@@ -1,6 +1,7 @@
-<h1>Listing tasks</h1>
-
-<table>
+<div class ="container text-terms">
+  <h1>Tasks</h1>
+<button type="button" class="btn btn-default btn-info pull-right"> <%= link_to 'Create Task', new_task_path %></button>
+<table class = "table">
   <thead>
     <tr>
       <th>Description</th>
@@ -19,7 +20,8 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+
+
+</div>
