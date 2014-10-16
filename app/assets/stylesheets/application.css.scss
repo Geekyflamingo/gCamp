@@ -17,16 +17,12 @@
 @import "bootstrap";
 
 .full {
-background-image: url(image-path('background_image.jpg')); //no-repeat center center fixed;
+background-image: url(image-path('background_image.jpg'));
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
 }
-
-.navbar {
-  background-color:#fd7d0b;
-  font-family:Courier}
 
 .gCamp{
   background-color:#ede3d5;
@@ -43,35 +39,23 @@ background-size: cover;
 
 h1{
   margin-bottom: 45px;
-  font-family:Courier;
   }
 
 p{
-  font-family:Courier;
 font-size:20px
 }
 
 h2{
 background:#92C4F0;
-font-family: Courier
-}
-
-.panel{
-  font-family: Courier;
 }
 
 footer{
-  font-family:Courier;
   text-align:justify;
   font-size: 20px
 }
 
 blockquote{
   border-left: 0px;
-}
-
-cite{
-  font-family: Courier;
 }
 
 .panel{
