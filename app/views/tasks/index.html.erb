@@ -1,6 +1,10 @@
 <div class ="container text-terms">
   <h1>Tasks</h1>
-<button type="button" class="btn btn-default btn-info pull-right"> <%= link_to 'Create Task', new_task_path %></button>
+
+<button type="button" class="btn btn-default btn-info pull-right">
+<%= link_to 'Create Task', new_task_path %>
+</button>
+
 <table class = "table">
   <thead>
     <tr>
@@ -13,9 +17,9 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.description %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button type= "button" class ="btn btn-default btn-info"><%= link_to 'Show', task %></td>
+        <td><button type= "button" class ="btn btn-default btn-info"><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><button type= "button" class ="btn btn-default btn-info"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
