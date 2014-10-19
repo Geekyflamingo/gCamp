@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.order("Description").page(params[:page]).per(5)
   end
 
   # GET /tasks/1

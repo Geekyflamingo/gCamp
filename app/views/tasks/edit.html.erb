@@ -1,6 +1,7 @@
+<div class="Edit">
 <ol class="breadcrumb">
   <li><a><%= link_to "Tasks", tasks_path %> </a></li>
-  <li> <%= @task.description %></li>
+  <li><a><%= link_to @task.description %></a></li>
   <li class= "active">Edit</li>
 </ol>
 
@@ -8,6 +9,10 @@
 
 <%= render 'form', button_name: "Update Task" %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
