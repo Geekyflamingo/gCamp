@@ -1,4 +1,10 @@
 <div class= "new_task">
+
+<ol class="breadcrumb">
+  <li><a><%= link_to "Tasks", tasks_path %> </a></li>
+  <li class= "active"> New Task</li>
+</ol>
+
 <h1>New task</h1>
 
 <%= render 'form', button_name: "Create Task" %>
