@@ -1,7 +1,7 @@
   <h1>Tasks
 
-<button type="button" class="btn btn-primary pull-right">
-<%= link_to 'Create Task', new_task_path %>
+
+<%= link_to 'Create Task', new_task_path, class:"btn btn-primary pull-right" %>
 </button>
 </h1>
 <hr>
@@ -17,9 +17,9 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.description %></td>
-        <td><button type= "button" class ="btn btn-success"><%= link_to 'Show', task %></td>
-        <td><button type= "button" class ="btn btn-info"><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><button type= "button" class ="btn btn-warning"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', task, class:"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_task_path(task), class:"btn btn-info" %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
