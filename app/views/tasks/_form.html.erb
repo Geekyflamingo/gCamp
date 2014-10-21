@@ -9,30 +9,30 @@
       <% end %>
       </ul>
     </div>
-<% end %>
+  <% end %>
 
-<form class="form-horizontal" role="form">
- <div class="form-group">
-     <%= f.label :description, class: "col-sm-1" %>
-   <div class="col-sm-10">
-     <%= f.text_field :description, class: "col-sm-8" %>
+
+   <div class="form-group">
+       <%= f.label :description, class: "col-sm-1" %>
+     <div class="col-sm-10">
+       <%= f.text_field :description, class: "col-sm-8" %>
+     </div>
    </div>
- </div>
 
-<% unless current_page?(new_task_path)%>
- <div class="form-group">
-   <div class="col-sm-offset-1 col-sm-10">
-      <%= f.check_box :complete %>
-      <%= f.label :complete %>
+  <% unless current_page?(new_task_path)%>
+   <div class="form-group">
+     <div class="col-sm-offset-1 col-sm-10">
+        <%= f.check_box :complete %>
+        <%= f.label :complete %>
+     </div>
    </div>
- </div>
-<%end%>
+  <% end %>
 
-  <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-10"> <br>
-      <%= f.submit name: button_name, class: "btn btn-primary"%>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10"> <br>
+        <%= f.submit name: button_name, class: "btn btn-primary"%>
+      </div>
     </div>
-  </div>
-</form>
-<br>
+  
+  <br>
 <% end %>
