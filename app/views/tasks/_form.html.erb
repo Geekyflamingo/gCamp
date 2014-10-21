@@ -19,13 +19,14 @@
    </div>
  </div>
 
-
+<% unless current_page?(new_task_path)%>
  <div class="form-group">
    <div class="col-sm-offset-1 col-sm-10">
       <%= f.check_box :complete %>
       <%= f.label :complete %>
    </div>
  </div>
+<%end%>
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-10"> <br>
