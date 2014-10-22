@@ -1,17 +1,18 @@
 <div class="Edit">
-<ol class="breadcrumb">
-  <li><a><%= link_to "Tasks", tasks_path %> </a></li>
-  <li><a><%= link_to @task.description %></a></li>
-  <li class= "active">Edit</li>
-</ol>
 
-<h1>Editing task</h1>
+  <ol class="breadcrumb">
+    <li><a><%= link_to "Tasks", tasks_path %> </a></li>
+    <li><a><%= link_to @task.description %></a></li>
+    <li class= "active">Edit</li>
+  </ol>
 
-<%= render 'form', button_name: "Update Task" %>
+  <h1>Editing task</h1>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+  <%= render 'form', button_name: "Update Task" %>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>

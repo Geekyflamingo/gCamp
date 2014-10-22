@@ -1,11 +1,15 @@
-<div class= "alert-success text-center" role= "alert"><strong><p> <%= notice %></p></strong></div>
+<div class= "alert-success text-center" role= "alert">
+  <strong>
+    <p> <%= notice %></p>
+    </strong>
+</div>
 
 <ol class="breadcrumb">
   <li><a><%= link_to "Tasks", tasks_path %> </a></li>
   <li class= "active"> <%= @task.description %></li>
 </ol>
 
-<p>
+  <p>
   <strong>Description:</strong>
     <%= @task.description %>
 </p>
@@ -17,8 +21,7 @@
 
 <p>
   <strong>Due Date:</strong>
-    <%= @task.due_date %>
+    <%= @task.due_date.strftime("%m/%d/%Y") %>
 </p>
-
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
