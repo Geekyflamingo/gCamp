@@ -2,6 +2,14 @@
   <%= link_to 'Create Task', new_task_path, class:"btn btn-primary pull-right" %>
 </h1>
 
+<div>
+  <%=link_to "All", tasks_path(type: "all") %> |
+  <%=link_to "Incomplete", tasks_path(type: "incomplete")%>
+</div>
+
+
+
+
 <hr>
 
 <table class = "table">
