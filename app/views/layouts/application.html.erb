@@ -51,10 +51,16 @@
 
 
     <div class= "container">
+
+      <div class= "alert-success text-center" role= "alert">
+        <strong>
+          <p> <%= notice %></p>
+          </strong>
+      </div>
       <%= yield %>
 
 <hr>
-      <footer>
+        <footer>
         <font size ="5"><%= link_to "About |", about_path %> </font>
         <font size ="5"><%= link_to "Terms |", terms_path%> </font>
         <font size ="5"><%= link_to "FAQ |", faq_path %> </font>
