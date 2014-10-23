@@ -5,16 +5,16 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
 
-    if params[:type] == "incomplete"
     @tasks = Task.where(complete: false).page(params[:page]).per(5)
+    @ref = "incomplete"  
 
-    elsif params[:type] =="all"
+    if params[:type] =="all"
       @tasks = Task.all.page(params[:page]).per(5)
+      @ref = "all"
 
-    else
-      @tasks = Task.order("Description").page(params[:page]).per(5)
+# @tasks = Task.order("Description").page(params[:page]).per(5)
     end
-    
+
   end
 
   # GET /tasks/1

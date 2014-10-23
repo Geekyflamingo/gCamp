@@ -1,16 +1,14 @@
-<h1>Tasks
-  <%= link_to 'Create Task', new_task_path, class:"btn btn-primary pull-right" %>
-</h1>
+<div class= "page-header">
+  <div class= "pull-right">
+    <%=link_to_if((@ref == "incomplete"), "All", tasks_path(type:"all")) %> |
+    <%=link_to_if((@ref == "all"), "Incomplete", tasks_path(type:"incomplete")) %>
+    <%= link_to 'Create Task', new_task_path, class:"btn btn-primary" %>
+  </div>
 
-<div>
-  <%=link_to "All", tasks_path(type: "all") %> |
-  <%=link_to "Incomplete", tasks_path(type: "incomplete")%>
+  <h1>Tasks</h1>
 </div>
 
 
-
-
-<hr>
 
 <table class = "table">
   <thead>
