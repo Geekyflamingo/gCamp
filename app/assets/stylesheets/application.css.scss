@@ -16,6 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 .full {
   background-image: url(image-path('background_image.jpg'));
   -webkit-background-size: cover;
@@ -103,5 +105,8 @@ blockquote{
 .footer{
   background-color:#ffffff;
   width: 1140px;
-  height:62px
+  height:62px;
+  img {
+    height:30px;
+  }
 }
