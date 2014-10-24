@@ -45,35 +45,36 @@
 
 <hr>
 
-    </div>
+<div class ="footer">
+  <footer>
+    <div>
+      <div class= "col-md-4">
+        <%= link_to "About |", about_path %> <%= link_to "Terms |", terms_path%> <%= link_to "FAQ |", faq_path %> <%= link_to "Tasks", tasks_path %>
+      </div>
 
-    <div class ="container footer">
-      <footer>
-        <div>
-          <div class= "col-md-2">
-            <%= link_to "About |", about_path %> <%= link_to "Terms |", terms_path%> <%= link_to "FAQ |", faq_path %> <%= link_to "Tasks", tasks_path %>
-          </div>
+        <div class= "col-md-offset-9">
+          <%= link_to "https://www.linkedin.com/profile/view?id=248387462&trk=nav_responsive_tab_profile" do %>
+          <%= image_tag("linked_in.jpg") %>
+          <%end%> |
 
-            <div class= "col-md-2 col-md-offset-8">
-              <%= link_to "https://www.linkedin.com/profile/view?id=248387462&trk=nav_responsive_tab_profile" do %>
-              <%= image_tag("linked_in.jpg") %>
-              <%end%> |
+          <%= link_to "https://github.com/Geekyflamingo" do %>
+          <%= image_tag("GitHub.png") %>
+          <%end%> |
 
-              <%= link_to "https://github.com/Geekyflamingo" do %>
-              <%= image_tag("GitHub.png") %>
-              <%end%> |
+          <%= link_to "https://twitter.com/Geekyflamingo" do %>
+          <%= image_tag("Twitter.png") %>
+          <%end%> |
 
-              <%= link_to "https://twitter.com/Geekyflamingo" do %>
-              <%= image_tag("Twitter.png") %>
-              <%end%> |
-
-              <%= link_to "http://www.galvanize.it/school/" do %>
-              <%= image_tag("gschool.png") %>
-              <%end%>
-            </div>
+          <%= link_to "http://www.galvanize.it/school/" do %>
+          <%= image_tag("gschool.png") %>
+          <%end%>
         </div>
-      </footer>
     </div>
+  </footer>
+</div>
+
+    </div>
+
 
      <%= javascript_include_tag 'application' %>
   </body>
