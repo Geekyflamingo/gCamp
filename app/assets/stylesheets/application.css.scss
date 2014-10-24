@@ -17,11 +17,12 @@
 @import "bootstrap";
 
 .full {
-background-image: url(image-path('background_image.jpg'));
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+  background-image: url(image-path('background_image.jpg'));
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .gCamp{
