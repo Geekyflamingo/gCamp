@@ -28,6 +28,12 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       redirect_to users_path, notice: 'User was successfully updated.'
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path, notice: 'User was successfully deleted.'
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
