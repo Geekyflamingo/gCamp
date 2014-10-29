@@ -6,11 +6,19 @@ class TasksController < ApplicationController
   def index
 
     @tasks = Task.where(complete: false).page(params[:page]).per(5)
-    @ref = "incomplete"  
+    @ref = "incomplete"
 
     if params[:type] =="all"
       @tasks = Task.all.page(params[:page]).per(5)
       @ref = "all"
+
+      # @tasks = Post.order(:created_at)
+        respond_to do |format|
+        format.html
+        format.csv { send_data @tasks.as_csv }
+  end
+
+
 
 # @tasks = Task.order("Description").page(params[:page]).per(5)
     end
