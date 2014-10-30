@@ -17,11 +17,9 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    set_project
   end
 
   def edit
-  set_project
   end
 
   def update
@@ -31,7 +29,6 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
-    set_project
     @project.destroy
     redirect_to projects_path, notice: 'Project was successfully deleted.'
   end
