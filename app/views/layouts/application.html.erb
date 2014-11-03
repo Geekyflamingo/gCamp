@@ -21,6 +21,13 @@
         <div class="navbar-header">
 
           <font size= "6"><%= link_to "gCamp", root_path %> </font>
+        <% if current_user %>
+      <%= link_to "Sign Out", signout_path %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      |
+      <%= link_to "Sign In", signin_path %>
+    <% end %>
         </div>
       </div>
     </div>
