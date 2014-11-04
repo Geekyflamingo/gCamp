@@ -58,21 +58,20 @@ feature "Users" do
 
   end
 
+  scenario "User wants to delete a user" do
+
+    User.create!(
+      first_name: "Mr. T" , last_name: "Pity the fool!" , email: "mrt@example.com",
+      password: "pass", password_confirmation: "pass"
+    )
+
+    visit users_path
+    expect(page).to have_content("Mr. T")
+    click_on "Edit"
+    click_on "Delete User"
+    expect(page).to have_no_content("Mr. T")
+    save_and_open_page
+
+  end
+
 end
-
-
-
-
-
-#     visit root_path
-#
-#     expect(page).to have_content("My awesome event")
-#
-#     click_on "delete"
-#
-#
-#     expect(page).to have_no_content("My awesome event")
-#
-#   end
-#
-# end
