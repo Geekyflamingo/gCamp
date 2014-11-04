@@ -54,7 +54,7 @@ feature "Users" do
     click_on "Mr. T"
     expect(page).to have_content("Mr. T")
     expect(page).to have_no_content("Password")
-    save_and_open_page
+
 
   end
 
@@ -72,7 +72,7 @@ scenario "User wants to click the edit link in the show page" do
   expect(page).to have_no_content("Password")
   click_on "Edit"
   expect(page).to have_content("Edit User")
-  save_and_open_page
+
 
 end
 
@@ -90,7 +90,7 @@ scenario "User wants to click the back link in the show page" do
   expect(page).to have_no_content("Password")
   click_on "Back"
   expect(page).to have_content("Users")
-  save_and_open_page
+
 
 end
 
@@ -106,7 +106,7 @@ end
     click_on "Edit"
     click_on "Delete User"
     expect(page).to have_no_content("Mr. T")
-    save_and_open_page
+    
 
   end
 
