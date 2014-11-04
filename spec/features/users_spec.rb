@@ -42,6 +42,22 @@ feature "Users" do
 
   end
 
+  scenario "User wants to see a user" do
+
+    User.create!(
+      first_name: "Mr. T" , last_name: "Pity the fool!" , email: "mrt@example.com",
+      password: "pass", password_confirmation: "pass"
+    )
+
+    visit users_path
+    expect(page).to have_content("Mr. T")
+    click_on "Mr. T"
+    expect(page).to have_content("Mr. T")
+    expect(page).to have_no_content("Password")
+    save_and_open_page
+
+  end
+
 end
 
 
