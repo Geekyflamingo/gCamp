@@ -1,4 +1,4 @@
-<div class= "col-md-4 col-md-offset-4 well well-lg text-center">
+<div class= "col-md-4 col-md-offset-4 well well-lg">
 <h1>Sign into gCamp</h1>
 
 <div class= "form-horizontal">
@@ -7,9 +7,9 @@
 <%= form_tag signin_path do |f| %>
 
   <% if @sign_in_error %>
-    <p>
+    <font size= "3">
       <%= @sign_in_error %>
-    </p>
+    </font>
   <% end %>
 </div>
 
@@ -27,7 +27,7 @@
     <%= password_field_tag :password, "", class: "form-control" %>
   </div>
 
-  <div class ="form-group">  <br>
+  <div class ="form-group col-sm-2">  <br>
     <%= submit_tag "Sign in", class: "btn btn-primary" %>
   </div>
 
