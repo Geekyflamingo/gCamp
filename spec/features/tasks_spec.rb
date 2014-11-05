@@ -16,6 +16,8 @@ feature "Tasks" do
     click_on "Create Task"
 
     expect(page).to have_content("Extreme Testing!")
+    expect(page).to have_content("Task was successfully created.")
+    save_and_open_page
 
 
   end
