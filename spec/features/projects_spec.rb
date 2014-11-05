@@ -50,8 +50,24 @@ feature "Projects" do
       click_on "Update Project"
       expect(page).to have_no_content("End War")
       expect(page).to have_content("Build a dog house")
+      expect(page).to have_content("Project was successfully updated")
 
   end
 
+  scenario "User wants to delete a Project" do
+
+    Project.create!(
+      name: "Write a song"
+    )
+
+    visit projects_path
+    expect(page).to have_content("Write a song")
+    click_on "Write a song"
+    expect(page).to have_content("Destroy")
+    click_on "Destroy"
+    expect(page).to have_no_content("Write a song")
+    expect(page).to have_content("Project was successfully deleted")
+
+  end
 
 end
