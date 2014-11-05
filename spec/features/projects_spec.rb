@@ -18,7 +18,7 @@ feature "Projects" do
 
   end
 
-  scenario "User wants to see a task" do
+  scenario "User wants to see a project" do
 
     Project.create!(
       name: "Build a boat"
@@ -32,5 +32,26 @@ feature "Projects" do
       expect(page).to have_no_content("test")
 
   end
+
+  scenario "User wants to edit a project" do
+
+    Project.create!(
+      name: "End War"
+    )
+
+      visit projects_path
+      expect(page).to have_content("End War")
+      click_on "End War"
+      expect(page).to have_content("End War")
+      expect(page).to have_no_content("test")
+      click_on "Edit"
+      expect(page).to have_content("Edit Project")
+      fill_in "Name", with: "Build a dog house"
+      click_on "Update Project"
+      expect(page).to have_no_content("End War")
+      expect(page).to have_content("Build a dog house")
+
+  end
+
 
 end
