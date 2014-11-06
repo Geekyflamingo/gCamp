@@ -20,6 +20,11 @@ feature "Sign Up" do
     expect(page).to have_content("Sign Out")
     expect(page).to have_no_content("Sign In")
 
+    click_on "Sign Out"
+    expect(page).to have_content("Sign Up")
+    expect(page).to have_content("Sign In")
+    expect(page).to have_no_content("Mr. Rogers")
+
   end
 
   scenario "User wants to sign up with invalid data -email blank" do
