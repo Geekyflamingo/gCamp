@@ -110,32 +110,5 @@ end
 
   end
 
-  scenario "User wants to sign in with valid data" do
-    User.create!(
-      first_name: "Bob" , last_name: "Smith" , email: "mrt@example.com",
-      password: "pass", password_confirmation: "pass"
-    )
-
-      visit users_path
-      expect(page).to have_content("gCamp")
-      save_and_open_page
-      click_on "Sign In"
-      save_and_open_page
-      expect(page).to have_content("Sign into gCamp")
-      within("//div[@id='email']") do
-        fill_in "Email", with: "mrt@example.com"
-      end
-      within("//div[@id='password']") do
-        fill_in "Password", with: "pass"
-      end
-      within("//div[@id='signin']") do
-        click_button "Sign in"
-        save_and_open_page
-      end
-      # expect(page).to have_content("Bob Smith")
-       expect(page).to have_content("Sign Out")
-      # expect(page).to have_content("Sign In")
-
-  end
-
+  
 end

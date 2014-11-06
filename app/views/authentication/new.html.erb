@@ -3,15 +3,17 @@
 
 <div class= "form-horizontal">
 
-<div class= "text-danger">
+
 <%= form_tag signin_path do |f| %>
 
   <% if @sign_in_error %>
-    <font size= "3">
-      <%= @sign_in_error %>
-    </font>
+    <div class= "text-danger">
+      <font size= "3">
+        <%= @sign_in_error %>
+      </font>
+    </div>
   <% end %>
-</div>
+
 
   <div class ="form-group col-sm-2 control-label">
     <%= label_tag :email %>

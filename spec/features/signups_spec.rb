@@ -15,6 +15,7 @@ feature "Sign Up" do
     fill_in "Email", with: "bemyneighbor@example.com"
     fill_in "Password", with: "rogers"
     fill_in "Password Confirmation", with: "rogers"
+    save_and_open_page
     click_on "Sign up"
     expect(page).to have_content("Mr. Rogers")
     expect(page).to have_content("Sign Out")
