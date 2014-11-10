@@ -17,7 +17,7 @@ feature "Tasks" do
 
     expect(page).to have_content("Extreme Testing!")
     expect(page).to have_content("Task was successfully created.")
-    save_and_open_page
+    
 
 
   end
@@ -33,7 +33,7 @@ feature "Tasks" do
       click_on "Show"
       expect(page).to have_content("Feed the dog")
       expect(page).to have_no_content("Password")
-      save_and_open_page
+
 
   end
 
@@ -57,7 +57,7 @@ feature "Tasks" do
 
       click_on "All"
       expect(page).to have_content("Feed the dog")
-      save_and_open_page
+
 
   end
 
@@ -71,8 +71,22 @@ feature "Tasks" do
     expect(page).to have_content("Feed the dog")
     click_on "Destroy"
     expect(page).to have_no_content("Feed the dog")
-    save_and_open_page
+
 
   end
+
+  scenario "User wants to create a Task without a description" do
+
+    visit tasks_path
+    expect(page).to have_content("Tasks")
+
+    click_on "Create Task"
+    expect(page).to have_content("New Task")
+
+    click_on "Create Task"
+
+    expect(page).to have_content("Description can't be blank")
+  end
+
 
 end
