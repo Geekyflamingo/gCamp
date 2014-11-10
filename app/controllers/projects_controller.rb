@@ -12,8 +12,11 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to project_path(@project), notice: 'Project was successfully created.'
+    if @project.save
+      redirect_to project_path(@project), notice: 'Project was successfully created.'
+    else
+      render :new
+    end
   end
 
   def show
