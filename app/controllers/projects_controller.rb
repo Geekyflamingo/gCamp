@@ -27,8 +27,11 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def update
     @project.update(project_params)
-    @project.save
-    redirect_to project_path, notice: 'Project was successfully updated.'
+    if @project.save
+      redirect_to project_path, notice: 'Project was successfully updated.'
+    else
+      render :new
+    end
   end
 
   def destroy
