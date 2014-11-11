@@ -12,12 +12,12 @@ feature "Tasks" do
 
 
     fill_in "Description", with: "Extreme Testing!"
-    fill_in "Due date", with: "11/04/2014"
+    fill_in "Due date", with: Date.today
     click_on "Create Task"
 
     expect(page).to have_content("Extreme Testing!")
     expect(page).to have_content("Task was successfully created.")
-    
+
 
 
   end
@@ -25,7 +25,7 @@ feature "Tasks" do
   scenario "User wants to see a task" do
 
     Task.create!(
-      description: "Feed the dog" , complete: "false" , due_date: "11/04/2014"
+      description: "Feed the dog" , complete: "false" , due_date: Date.today
     )
 
       visit tasks_path
@@ -40,7 +40,7 @@ feature "Tasks" do
   scenario "User wants to edit a task" do
 
     Task.create!(
-      description: "Feed the dog" , complete: "false" , due_date: "11/04/2014"
+      description: "Feed the dog" , complete: "false" , due_date: Date.today
     )
 
       visit tasks_path
@@ -64,7 +64,7 @@ feature "Tasks" do
   scenario "User wants to delete a Task" do
 
     Task.create!(
-      description: "Feed the dog" , complete: "false" , due_date: "11/04/2014"
+      description: "Feed the dog" , complete: "false" , due_date: Date.today
     )
 
     visit tasks_path

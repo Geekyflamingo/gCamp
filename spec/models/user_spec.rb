@@ -1,16 +1,36 @@
 require 'rails_helper'
 
-feature "users" do
-  scenario "User creates a user" do
 
-  visit users_path
-  expect(page).to have_content("Users")
+describe User do
 
-  click_on "Create User"
-  expect(page).to have_content("New User")
+  it 'verifies that user is invaild' do
 
-  click_on "Create User"
+    user = User.new
+    expect(user.valid?).to be(false)
+    user.first_name =
+    expect(user.valid?).to be(false)
+    user.last_name=
+    expect(user.valid?).to be(false)
+    user.email=
+    expect(user.valid?).to be(false)
 
-  expect(page).to have_content("First name can't be blank")
   end
+
+  it 'verifies that user is vaild' do
+
+    user = User.new
+    expect(user.valid?).to be(false)
+    user.first_name = 'Bob'
+    expect(user.valid?).to be(false)
+    user.last_name='Smith'
+    expect(user.valid?).to be(false)
+    user.email='smith@example.com'
+    expect(user.valid?).to be(false)
+    user.password='pass'
+    expect(user.valid?).to be(false)
+    user.password_confirmation='pass'
+    expect(user.valid?).to be(true)
+
+  end
+
 end
