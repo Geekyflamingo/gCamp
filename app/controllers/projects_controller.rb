@@ -30,7 +30,7 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
     if @project.save
       redirect_to project_path, notice: 'Project was successfully updated.'
     else
-      render :new
+      render :edit
     end
   end
 
