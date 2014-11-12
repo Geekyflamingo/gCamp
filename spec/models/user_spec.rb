@@ -29,7 +29,6 @@ describe User do
     user.password='pass'
     expect(user.valid?).to be(true)
 
-
   end
 
 end

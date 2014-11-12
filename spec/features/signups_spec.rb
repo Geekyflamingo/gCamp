@@ -6,21 +6,17 @@ feature "Sign Up" do
 
     visit root_path
     expect(page).to have_content("gCamp")
-
     click_on "Sign Up"
     expect(page).to have_content("Sign Up for gCamp!")
-
     fill_in "First Name", with: "Mr."
     fill_in "Last Name", with: "Rogers"
     fill_in "Email", with: "bemyneighbor@example.com"
     fill_in "Password", with: "rogers"
     fill_in "Password Confirmation", with: "rogers"
-    save_and_open_page
     click_on "Sign up"
     expect(page).to have_content("Mr. Rogers")
     expect(page).to have_content("Sign Out")
     expect(page).to have_no_content("Sign In")
-
     click_on "Sign Out"
     expect(page).to have_content("Sign Up")
     expect(page).to have_content("Sign In")
@@ -32,10 +28,8 @@ feature "Sign Up" do
 
     visit root_path
     expect(page).to have_content("gCamp")
-
     click_on "Sign Up"
     expect(page).to have_content("Sign Up for gCamp!")
-
     fill_in "First Name", with: "Mr."
     fill_in "Last Name", with: "Rogers"
     fill_in "Password", with: "rogers"
@@ -50,10 +44,8 @@ feature "Sign Up" do
 
     visit root_path
     expect(page).to have_content("gCamp")
-
     click_on "Sign Up"
     expect(page).to have_content("Sign Up for gCamp!")
-
     fill_in "First Name", with: "Mr."
     fill_in "Last Name", with: "Rogers"
     click_on "Sign up"
@@ -67,10 +59,8 @@ feature "Sign Up" do
 
     visit root_path
     expect(page).to have_content("gCamp")
-
     click_on "Sign Up"
     expect(page).to have_content("Sign Up for gCamp!")
-
     fill_in "First Name", with: "Mr."
     fill_in "Last Name", with: "Rogers"
     fill_in "Email", with: "bemyneighbor@example.com"
@@ -85,10 +75,8 @@ feature "Sign Up" do
 
     visit root_path
     expect(page).to have_content("gCamp")
-
     click_on "Sign Up"
     expect(page).to have_content("Sign Up for gCamp!")
-
     fill_in "First Name", with: "Mr."
     fill_in "Last Name", with: "Rogers"
     fill_in "Email", with: "bemyneighbor@example.com"
@@ -105,10 +93,8 @@ feature "Sign Up" do
 
     visit root_path
     expect(page).to have_content("gCamp")
-
     click_on "Sign Up"
     expect(page).to have_content("Sign Up for gCamp!")
-
     fill_in "First Name", with: "Mr."
     fill_in "Last Name", with: "Rogers"
     fill_in "Password", with: "rogers"

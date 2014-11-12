@@ -34,7 +34,6 @@ describe Task do
     task.due_date = Date.today+7
     expect(task.valid?).to be(true)
 
-
   end
 
 end
