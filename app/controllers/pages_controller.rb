@@ -2,7 +2,6 @@ class PagesController <ApplicationController
 
   def index
 
-
     quote1 = Quote.new
     quote1.text = "People who think they know everything are a great annoyance to those of us who do."
     quote1.author = "Issac Asimov"

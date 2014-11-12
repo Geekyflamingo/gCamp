@@ -8,7 +8,7 @@ before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def new
     @project = Project.new
-    end
+  end
 
   def create
     @project = Project.new(project_params)
@@ -45,8 +45,8 @@ private
     @project = Project.find(params[:id])
   end
 
-def project_params
-    params.require(:project).permit(:name)
-end
+  def project_params
+      params.require(:project).permit(:name)
+  end
 
 end

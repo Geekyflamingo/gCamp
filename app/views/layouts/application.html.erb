@@ -23,40 +23,36 @@
         </div>
         <ul class= "nav navbar-nav navbar-right">
           <% if current_user %>
-         <li><%= link_to ("#{current_user.first_name} #{current_user.last_name}"), user_path(current_user) %></li>
-         <li><%= link_to "Sign Out", signout_path %></li>
+            <li><%= link_to ("#{current_user.first_name} #{current_user.last_name}"),
+            user_path(current_user) %></li>
+            <li><%= link_to "Sign Out", signout_path %></li>
           <% else %>
-         <li><%= link_to "Sign Up", signup_path %></li>
-         <li><%= link_to "Sign In", signin_path %></li>
-    <% end %>
+            <li><%= link_to "Sign Up", signup_path %></li>
+            <li><%= link_to "Sign In", signin_path %></li>
+         <% end %>
         </ul>
-        </div>
       </div>
+    </div>
 
-
-
-
-
-
-  <div class= "container">
-    <% if notice %>
+    <div class= "container">
+      <% if notice %>
         <div class= "alert-success text-center" role= "alert">
           <strong><p> <%= notice %></p></strong>
         </div>
-    <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
 
-    <%= yield %>
-  </div>
+    <hr>
 
-<hr>
-
-  <div class ="footer">
-    <footer class= "container">
-      <div>
-        <div class= "col-md-5">
-          <%= link_to "About |", about_path %> <%= link_to "Terms |", terms_path%> <%= link_to "FAQ |", faq_path %> <%= link_to "Tasks |", tasks_path %> <%= link_to "Users |", users_path %> <%= link_to "Projects", projects_path %>
-        </div>
-
+    <div class ="footer">
+      <footer class= "container">
+        <div>
+          <div class= "col-md-5">
+            <%= link_to "About |", about_path %> <%= link_to "Terms |", terms_path%> <%= link_to "FAQ |",
+            faq_path %> <%= link_to "Tasks |", tasks_path %> <%= link_to "Users |",
+            users_path %> <%= link_to "Projects", projects_path %>
+          </div>
           <div class= "col-md-offset-9">
             <%= link_to "https://www.linkedin.com/profile/view?id=248387462&trk=nav_responsive_tab_profile" do %>
             <%= image_tag("linked_in.jpg") %>
@@ -74,12 +70,9 @@
             <%= image_tag("gschool.png") %>
             <%end%>
           </div>
-      </div>
-    </footer>
-  </div>
-
+        </div>
+      </footer>
     </div>
-
 
      <%= javascript_include_tag 'application' %>
   </body>

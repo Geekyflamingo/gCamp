@@ -1,17 +1,17 @@
 <p>
-<strong> First Name:</strong>
+  <strong> First Name:</strong>
   <%= @user.first_name %>
 </p>
 
 <p>
-<strong>Last Name:</strong>
+  <strong>Last Name:</strong>
   <%= @user.last_name %>
 </p>
 
 <p>
-<strong>Email:</strong>
+  <strong>Email:</strong>
   <%= mail_to(@user.email) %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %> 
+<%= link_to 'Back', users_path %>

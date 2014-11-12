@@ -1,17 +1,16 @@
-
 <ol class="breadcrumb">
   <li><a><%= link_to "Tasks", tasks_path %> </a></li>
   <li class= "active"> <%= @task.description %></li>
 </ol>
 
   <p>
-  <strong>Description:</strong>
+    <strong>Description:</strong>
     <%= @task.description %>
-</p>
+  </p>
 
 <p>
   <strong>Complete:</strong>
-    <%= @task.complete %>
+  <%= @task.complete %>
 </p>
 
 <p>
@@ -21,5 +20,6 @@
     <% else nil %>
     <%end%>
 </p>
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

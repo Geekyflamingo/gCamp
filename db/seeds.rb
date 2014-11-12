@@ -3,10 +3,3 @@
 #
 # Examples:
 #
-   users = User.create([
-     { first_name: 'AA',
-     last_name: 'BB',
-     email: 'aa@bb.com',
-     password: 'aabb',
-     password_confirmation: 'aabb' }
-  ])
