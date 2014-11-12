@@ -27,9 +27,8 @@ describe User do
     user.email='smith@example.com'
     expect(user.valid?).to be(false)
     user.password='pass'
-    expect(user.valid?).to be(false)
-    user.password_confirmation='pass'
     expect(user.valid?).to be(true)
+
 
   end
 
