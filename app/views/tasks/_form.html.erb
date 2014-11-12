@@ -1,30 +1,19 @@
 <div class= "form-horizontal">
   <%= form_for(@task) do |f| %>
-  <div class= "form-group">
-  <% if @task.errors.any? %>
-    <div class= "col-sm-offset-1 col-sm-6 alert alert-danger">
-      <h3><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
-        <ul>
-          <% @task.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    </div>
-  </div>
-  <% end %>
 
+<%= render "shared/errors", instance: @task %>
 
   <div class="form-group">
-    <%= f.label :description, class: "col-sm-1 control-label" %>
-      <div class="col-sm-4">
+    <%= f.label :description, class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
         <%= f.text_field :description, class: "form-control" %>
       </div>
   </div>
 
 
   <div class="form-group">
-      <%= f.label :due_date, class: "col-sm-1 control-label" %>
-      <div class="col-sm-2">
+      <%= f.label :due_date, class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
           <%= f.date_field :due_date, class: "form-control" %>
 
       </div>
@@ -32,7 +21,7 @@
 
   <% unless current_page?(new_task_path)%>
     <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10">
+      <div class="col-sm-offset-2 col-sm-5">
         <div class= "checkbox">
           <label>
             <%= f.check_box :complete %> Complete
@@ -43,7 +32,7 @@
   <% end %>
 
   <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-10"> <br>
+    <div class="col-sm-offset-2 col-sm-5"> <br>
       <%= f.submit name: button_name, class: "btn btn-primary"%>
     </div>
   </div>
