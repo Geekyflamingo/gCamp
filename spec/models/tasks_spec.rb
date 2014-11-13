@@ -3,36 +3,42 @@ require 'rails_helper'
 
 describe Task do
 
-  it 'verifies that task due date is invaild' do
+  it 'validates the presence of a description' do
 
     task = Task.new
-    expect(task.valid?).to be(false)
+    task.valid?
+    expect(task.errors[:description].present?).to eq(true)
     task.description = 'test'
-    expect(task.valid?).to be(true)
+    task.valid?
+    expect(task.errors[:description].present?).to eq(false)
+
+  end
+
+  it 'validates that task date is vaild' do
+
+    task = Task.new
+    task.valid?
+    expect(task.errors[:description].present?).to eq(true)
+    task.description = 'test'
+    task.valid?
+    expect(task.errors[:description].present?).to eq(false)
     task.due_date = Date.today-7
-    expect(task.valid?).to be(false)
+    task.valid?
+    expect(task.errors[:due_date].present?).to eq(true)
+    task.due_date = Date.today+7
+    task.valid?
+    expect(task.errors[:due_date].present?).to eq(false)
 
   end
 
-  it 'verifies that task date is vaild' do
-
-    task = Task.new
-    expect(task.valid?).to be(false)
-    task.description = 'test'
-    expect(task.valid?).to be(true)
+  it 'validates that task date is vaild in edit' do
+    task = Task.create!(description: "task", due_date: Date.today+7)
+    task.due_date = Date.today-7
+    task.valid?
+    expect(task.errors[:due_date].present?).to eq(false)
     task.due_date = Date.today+7
-    expect(task.valid?).to be(true)
-
-  end
-
-  it 'verifies that task date is invaild in edit' do
-
-    task = Task.new
-    expect(task.valid?).to be(false)
-    task.description =
-    expect(task.valid?).to be(false)
-    task.due_date = Date.today+7
-    expect(task.valid?).to be(true)
+    task.valid?
+    expect(task.errors[:due_date].present?).to eq(false)
 
   end
 
