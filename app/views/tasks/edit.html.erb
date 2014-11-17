@@ -1,8 +1,8 @@
 <div class="Edit">
 
   <ol class="breadcrumb">
-    <li><a><%= link_to "Tasks", tasks_path %> </a></li>
-    <li><a><%= link_to @task.description %></a></li>
+    <li><a><%= link_to "Tasks", project_tasks_path %> </a></li>
+    <li><a><%= link_to @task.description, project_task_path(@project, @task) %></a></li>
     <li class= "active">Edit</li>
   </ol>
 

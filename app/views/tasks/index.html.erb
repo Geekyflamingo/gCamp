@@ -5,6 +5,11 @@
     <%= link_to 'Create Task', new_project_task_path, class:"btn btn-primary" %>
   </div>
   <h1>Tasks</h1>
+  <ol class="breadcrumb">
+    <li><a><%= link_to "Projects", projects_path %> </a></li>
+    <li><a><%= link_to @project.name, project_path(@project) %> </a></li>
+    <li class= "active">Tasks</li>
+  </ol>
 </div>
 
 <table class = "table">
@@ -30,9 +35,9 @@
         </td>
           <td>
             <div class= "pull-right">
-              <%= link_to 'Show', project_task_path(task.project), class:"btn btn-success" %>
-              <%= link_to 'Edit', edit_project_task_path(task.project), class:"btn btn-info" %>
-              <%= link_to 'Destroy', project_task_path(task.project), method: :delete, data: { confirm: 'Are you sure?' },
+              <%= link_to 'Show', project_task_path(task.project, task), class:"btn btn-success" %>
+              <%= link_to 'Edit', edit_project_task_path(task.project, task), class:"btn btn-info" %>
+              <%= link_to 'Destroy', project_task_path(task.project, task), method: :delete, data: { confirm: 'Are you sure?' },
               class: "btn btn-warning" %>
             </div>
           </td>

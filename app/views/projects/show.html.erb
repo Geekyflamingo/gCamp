@@ -5,6 +5,11 @@
     class: "btn btn-danger" %>
   </div>
 
+<ol class="breadcrumb">
+  <li><a><%= link_to "Projects", projects_path %> </a></li>
+  <li class= "active"> <%= @project.name %></li>
+</ol>
+
   <h1><strong><%= @project.name %></strong></h1>
   <%= link_to 'Tasks', project_tasks_path(@project, @tasks) %>
 </div>
