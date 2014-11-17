@@ -1,19 +1,18 @@
 class TasksController < ApplicationController
+  before_action do
+    @project = Project.find(params[:project_id])
+  end
+
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
 
-    @tasks = Task.where(complete: false).page(params[:page]).per(5)
+    @tasks = @project.tasks.where(complete: false).page(params[:page]).per(5)
     @ref = "incomplete"
 
     if params[:type] =="all"
-      @tasks = Task.all.page(params[:page]).per(5)
+      @tasks = @project.tasks.page(params[:page]).per(5)
       @ref = "all"
-
-      respond_to do |format|
-        format.html
-        format.csv { send_data @tasks.as_csv }
-      end
     end
 
   end
@@ -24,7 +23,7 @@ class TasksController < ApplicationController
 
 
   def new
-    @task = Task.new
+    @task = @project.tasks.new
   end
 
 
@@ -33,44 +32,33 @@ class TasksController < ApplicationController
 
 
   def create
-    @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    @task = @project.tasks.new(task_params)
+    if @task.save
+      redirect_to project_tasks_path, notice: 'Task was successfully created.'
+    else
+      render :new
     end
   end
 
 
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    @task.update(task_params)
+    if @task.save
+      redirect_to project_tasks_path, notice: 'Task was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to project_tasks_path, notice: 'Task was successfully destroyed.'
   end
 
   private
 
     def set_task
-      @task = Task.find(params[:id])
+      @task = @project.tasks.find(params[:id])
     end
 
     def task_params

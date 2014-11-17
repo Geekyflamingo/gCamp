@@ -6,4 +6,5 @@
   </div>
 
   <h1><strong><%= @project.name %></strong></h1>
+  <%= link_to 'Tasks', project_tasks_path(@project, @tasks) %>
 </div>
