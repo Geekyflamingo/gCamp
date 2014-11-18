@@ -5,12 +5,13 @@
     <%= link_to 'Create Task', new_project_task_path, class:"btn btn-primary" %>
   </div>
   <h1>Tasks for <%= @project.name %></h1>
-  <ol class="breadcrumb">
-    <li><a><%= link_to "Projects", projects_path %> </a></li>
-    <li><a><%= link_to @project.name, project_path(@project) %> </a></li>
-    <li class= "active">Tasks</li>
-  </ol>
 </div>
+
+<ol class="breadcrumb">
+  <li><a><%= link_to "Projects", projects_path %> </a></li>
+  <li><a><%= link_to @project.name, project_path(@project) %> </a></li>
+  <li class= "active">Tasks</li>
+</ol>
 
 <table class = "table">
   <thead>

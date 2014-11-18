@@ -4,12 +4,12 @@
     <%= link_to 'Destroy', project_path(@project), method: :delete, data: { confirm: 'Are you sure?' },
     class: "btn btn-danger" %>
   </div>
+  <h1><strong><%= @project.name %></strong></h1>
+</div>
 
 <ol class="breadcrumb">
   <li><a><%= link_to "Projects", projects_path %> </a></li>
   <li class= "active"> <%= @project.name %></li>
 </ol>
 
-  <h1><strong><%= @project.name %></strong></h1>
-  <%= link_to (pluralize(@project.tasks.count, "Task")), project_tasks_path(@project, @tasks) %>
-</div>
+<%= link_to (pluralize(@project.tasks.count, "Task")), project_tasks_path(@project, @tasks) %>
