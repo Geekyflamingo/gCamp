@@ -16,4 +16,4 @@
 
 <br>
 
-<%= link_to "Member", project_memberships_path(@project, @memberships) %>
+<%= link_to (pluralize(@project.memberships.count,"Member")), project_memberships_path(@project) %>
