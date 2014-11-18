@@ -18,7 +18,7 @@ feature "Tasks" do
     click_on "Create Task"
     expect(page).to have_content("Tasks for YAY!")
     expect(page).to have_content("Task was successfully created.")
-    visit projects_path
+    click_on("Projects",match: :first)
     click_on "YAY!"
     click_on "1 Task"
     click_on "Show"

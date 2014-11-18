@@ -13,3 +13,7 @@
 </ol>
 
 <%= link_to (pluralize(@project.tasks.count, "Task")), project_tasks_path(@project, @tasks) %>
+
+<br>
+
+<%= link_to "Member", project_memberships_path(@project, @memberships) %>
