@@ -19,7 +19,8 @@ before_action :set_membership, only: [:show, :edit, :update, :destroy]
     if @membership.save
       redirect_to project_memberships_path(@project), notice: "Membership Created"
     else
-      render :new
+      @memberships = @project.memberships.all
+      render :index
     end
   end
 
