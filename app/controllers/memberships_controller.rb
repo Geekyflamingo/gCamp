@@ -27,14 +27,18 @@ before_action :set_membership, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-    @membership = Membership.find(params[:id])
     if @membership.update(membership_params)
+      p @membership
       redirect_to project_memberships_path, notice: "Member was Updated"
     else
       render :edit
     end
   end
 
+  def destroy
+    @membership.destroy
+    redirect_to project_memberships_path, notice: 'Member was successfully deleted.'
+  end
   private
 
   def set_membership

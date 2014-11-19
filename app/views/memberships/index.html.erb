@@ -13,25 +13,32 @@
   <%= form_for [@project, @membership] do |f| %>
   <div class="form-group">
     <%= f.collection_select(:user_id, User.all, :id, :full_name,
-    {include_blank: "Please select a user"}, {class: "form-control"}) %>
+    {include_blank: "Please select a user..."}, {class: "form-control"}) %>
   </div>
 
-<div class="form-group">
-  <%= f.select :role, ["owner", "member"], {class: "form-control"} %>
-</div>
-    <%= f.submit "Add New Member", class: "btn btn-primary" %>
+  <div class="form-group">
+    <%= f.select :role, ["owner", "member"],{}, {class: "form-control"} %>
+  </div>
+      <%= f.submit "Add New Member", class: "btn btn-primary" %>
 
-</div>
-<% end %>
+  </div>
+  <% end %>
 
-<table class = "table">
+  <table class = "table">
 
-  <tbody>
-    <% @memberships.each do |membership| %>
-      <tr>
-        <td><%= link_to membership.user.full_name, user_path(membership.user) %> </td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @memberships.each do |membership| %>
+        <tr>
+          <%= form_for [@project, membership] do |f| %>
+          <td><%= link_to membership.user.full_name, user_path(membership.user) %></td>
+          <td>
+            <%= f.select :role, ["owner", "member"],{include_blank: membership.role}, {class: "form-control"} %>
+          </td>
+              <td><%= f.submit "Update", class: "btn btn-primary" %></td>
+          <%end%>
+        <td><%= link_to "", project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' },
+        class: "glyphicon glyphicon-remove" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
