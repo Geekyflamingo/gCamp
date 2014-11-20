@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature "Tasks" do
+
   before do
-    Project.create!(
+    @project = Project.create!(
       name: "YAY!")
   end
 
@@ -26,24 +27,21 @@ feature "Tasks" do
 
   end
 
-  scenario "User wants to edit a task" do
-  
-    Task.create!(
+  scenario "User wants to edit a task and update it with a date in the past" do
+
+    @project.tasks.create!(
       description: "Feed the dog" , complete: "false" , due_date: Date.today
     )
 
-    visit tasks_path
-    expect(page).to have_content("Feed the dog")
+    visit projects_path
+    expect(page).to have_content("YAY!")
+    click_on "1"
+    expect(page).to have_content("Tasks for YAY!")
     click_on "Edit"
-    expect(page).to have_content("Editing task")
-    expect(page).to have_no_content("Password")
-    check "Complete"
+    expect(page).to have_content("Feed the dog")
+    fill_in "Due date", with: Date.today-7
     click_on "Update Task"
-    expect(page).to have_content("Feed the dog")
-    click_on "Tasks"
-    expect(page).to have_no_content("Feed the dog")
-    click_on "All"
-    expect(page).to have_content("Feed the dog")
+    expect(page).to have_no_content("Task was sucessfully updated.")
 
   end
   #
