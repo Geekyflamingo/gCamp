@@ -44,28 +44,34 @@ feature "Tasks" do
     expect(page).to have_no_content("Task was sucessfully updated.")
 
   end
-  #
-  # scenario "User wants to delete a Task" do
-  #
-  #   Task.create!(
-  #     description: "Feed the dog" , complete: "false" , due_date: Date.today
-  #   )
-  #
-  #   visit tasks_path
-  #   expect(page).to have_content("Feed the dog")
-  #   click_on "Destroy"
-  #   expect(page).to have_no_content("Feed the dog")
-  #
-  # end
-  #
-  # scenario "User wants to create a Task without a description" do
-  #
-  #   visit tasks_path
-  #   expect(page).to have_content("Tasks")
-  #   click_on "Create Task"
-  #   expect(page).to have_content("New Task")
-  #   click_on "Create Task"
-  #   expect(page).to have_content("Description can't be blank")
-  # end
+
+  scenario "User wants to delete a Task" do
+
+    @project.tasks.create!(
+      description: "Feed the dog" , complete: "false" , due_date: Date.today
+    )
+
+    visit projects_path
+    expect(page).to have_content("YAY!")
+    click_on "1"
+    expect(page).to have_content("Tasks for YAY!")
+    click_on "Destroy"
+    expect(page).to have_no_content("Feed the dog")
+
+  end
+
+  scenario "User wants to create a Task without a description" do
+
+    visit projects_path
+    expect(page).to have_content("Projects")
+    click_on "YAY!"
+    expect(page).to have_content("Edit")
+    click_on "0 Tasks"
+    expect(page).to have_content("Tasks for YAY!")
+    click_on "Create Task"
+    expect(page).to have_content("New Task")
+    click_on "Create Task"
+    expect(page).to have_content("Description can't be blank")
+  end
 
 end
