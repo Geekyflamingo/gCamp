@@ -19,7 +19,7 @@ feature "Comments" do
 
     visit project_tasks_path(project)
     click_on "Feed the dog"
-    fill_in "Comment", with: "My comment"
+    fill_in :description, with: "My comment"
     click_on "Add Comment"
     expect(page).to have_content("Dodger Oliver")
   end

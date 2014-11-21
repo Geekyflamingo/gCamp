@@ -21,7 +21,10 @@
     <%end%>
 </p>
 
- 
+<%= form_for(@comment) do %>
+<%= f.text_area :description %>
+<%= f.submit "Add Comment"%>
+<%end%>
 
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
 <%= link_to 'Back', project_tasks_path %>

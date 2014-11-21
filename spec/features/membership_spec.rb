@@ -98,6 +98,7 @@ feature "Membership" do
   end
 
   scenario "User cannot add a Member that is already there" do
+    skip
     visit projects_path
     expect(page).to have_content("Projects")
     click_on "YAY!"
