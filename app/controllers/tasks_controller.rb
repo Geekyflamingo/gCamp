@@ -19,6 +19,9 @@ class TasksController < ApplicationController
 
 
   def show
+    @comment = Comment.new
+    @comments = Comment.all
+    @task = @project.tasks.find(params[:id])
   end
 
 
@@ -40,6 +43,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def create_comment
+    comment_params = params.require(:comment).permit(
+        :user_id,
+        :task_id,
+        :description
+      )
+    @comment = Comment.new(comment_params)
+    @comment.save
+    redirect_to project_task_path
+  end
 
   def update
     @task.update(task_params)

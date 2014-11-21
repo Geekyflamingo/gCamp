@@ -21,10 +21,23 @@
     <%end%>
 </p>
 
-<%= form_for(@comment) do %>
+<table class = "table">
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= form_for([@project, @comment], url: {action: "create_comment"}) do |f| %>
+
 <%= f.text_area :description %>
-<%= f.submit "Add Comment"%>
+<%= f.submit "Add Comment", class: "btn btn-primary" %>
 <%end%>
+
 
 <%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
 <%= link_to 'Back', project_tasks_path %>
