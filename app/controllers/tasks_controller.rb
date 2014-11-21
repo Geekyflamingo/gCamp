@@ -3,7 +3,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :create_comment, :update, :destroy]
 
   def index
 
@@ -19,9 +19,10 @@ class TasksController < ApplicationController
 
 
   def show
-    @comment = Comment.new
-    @comments = Comment.all
     @task = @project.tasks.find(params[:id])
+    @comment = @task.comments.new
+    @comments = @task.comments.all
+
   end
 
 
@@ -49,9 +50,16 @@ class TasksController < ApplicationController
         :task_id,
         :description
       )
-    @comment = Comment.new(comment_params)
-    @comment.save
-    redirect_to project_task_path
+    @task = @project.tasks.find(params[:id])
+    if current_user
+      @comment = @task.comments.new(params.require(:comment).merge({:user_id => current_user.id}).permit(:description, :user_id, :task_id))
+      @comment.save
+      redirect_to project_task_path
+    else
+      @comment = @task.comments.new
+      @comments = @task.comments.all
+      render :show
+    end
   end
 
   def update
