@@ -98,7 +98,6 @@ feature "Membership" do
   end
 
   scenario "User cannot add a Member that is already there" do
-    skip
     visit projects_path
     expect(page).to have_content("Projects")
     click_on "YAY!"
@@ -114,11 +113,13 @@ feature "Membership" do
     end
 
     select "Dodger Oliver", from: "membership_user_id"
-    within('.well') do
-      select "Member", from: "membership_role"
-    end
-    click_on "Add New Member"
+    # within('.well') do
+    #   select "Member", from: "membership_role"
+    # end
+
+    click_on "Add"
     expect(page).to have_content("User has already been taken")
+
 
   end
 
