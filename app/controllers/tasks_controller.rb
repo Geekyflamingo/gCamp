@@ -19,10 +19,8 @@ class TasksController < ApplicationController
 
 
   def show
-    @task = @project.tasks.find(params[:id])
     @comment = @task.comments.new
     @comments = @task.comments.all
-
   end
 
 
@@ -50,7 +48,6 @@ class TasksController < ApplicationController
         :task_id,
         :description
       )
-    @task = @project.tasks.find(params[:id])
     if current_user
       @comment = @task.comments.new(params.require(:comment).merge({:user_id => current_user.id}).permit(:description, :user_id, :task_id))
       @comment.save
