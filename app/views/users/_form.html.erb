@@ -4,8 +4,11 @@
 
 <div class= "form-horizontal">
   <%= form_for(@user) do |f| %>
-
-    <%= render "shared/errors", instance: @user %>
+    <div class = "form-group">
+      <div class = "col-sm-offset-2 col-sm-5">
+        <%= render "shared/errors", instance: @user %>
+      </div>
+    </div>
 
     <div class="form-group">
       <%= f.label :first_name, "First Name", class: "col-sm-2 control-label" %>
@@ -28,6 +31,8 @@
       </div>
     </div>
 
+  <% if @user.id %>
+  <% else %>
     <div class ="form-group">
       <%= f.label :password, class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
@@ -41,7 +46,7 @@
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
     </div>
-
+  <%end%>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-5"> <br>
           <%= f.submit class: "btn btn-primary" %>
