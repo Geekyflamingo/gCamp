@@ -17,7 +17,7 @@ before_action :set_membership, only: [:show, :edit, :update, :destroy]
   def create
     @membership = @project.memberships.new(membership_params)
     if @membership.save
-      redirect_to project_memberships_path(@project), notice: "Membership Created"
+      redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was added successfully."
     else
       @memberships = @project.memberships.all
       render :index
@@ -26,7 +26,7 @@ before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
   def update
     if @membership.update(membership_params)
-      redirect_to project_memberships_path(@project), notice: "Membership Was Updated"
+      redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was updated successfully."
     else
       render :index
     end
@@ -34,7 +34,7 @@ before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @membership.destroy
-    redirect_to project_memberships_path(@project), notice: 'Member was successfully deleted.'
+    redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was deleted successfully."
   end
   private
 
