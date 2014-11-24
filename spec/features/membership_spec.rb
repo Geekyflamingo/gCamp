@@ -23,7 +23,7 @@ feature "Membership" do
     select "Dodger Oliver", from: "membership_user_id"
     select "Owner", from: "membership_role"
     click_on "Add New Member"
-    expect(page).to have_content("Membership Created")
+    expect(page).to have_content("Dodger Oliver was added successfully")
     expect(page).to have_content("Dodger Oliver")
     click_on "YAY!"
     expect(page).to have_content("1 Member")
@@ -39,13 +39,13 @@ feature "Membership" do
     select "Dodger Oliver", from: "membership_user_id"
     select "Owner", from: "membership_role"
     click_on "Add New Member"
-    expect(page).to have_content("Membership Created")
+    expect(page).to have_content("Dodger Oliver was added successfully")
     expect(page).to have_content("Dodger Oliver")
     within '.table' do
       select "Member", from: "membership_role"
     end
     click_on "Update"
-    expect(page).to have_content("Membership Was Updated")
+    expect(page).to have_content("Dodger Oliver was updated successfully")
     expect(page).to have_content("Member")
 
   end
@@ -61,7 +61,7 @@ feature "Membership" do
     select "Dodger Oliver", from: "membership_user_id"
     select "Owner", from: "membership_role"
     click_on "Add New Member"
-    expect(page).to have_content("Membership Created")
+    expect(page).to have_content("Dodger Oliver was added successfully")
     expect(page).to have_content("Dodger Oliver")
     click_on "Dodger Oliver"
     expect(page).to have_content("Email: do@example.com")
@@ -78,10 +78,10 @@ feature "Membership" do
     select "Dodger Oliver", from: "membership_user_id"
     select "Owner", from: "membership_role"
     click_on "Add New Member"
-    expect(page).to have_content("Membership Created")
+    expect(page).to have_content("Dodger Oliver was added successfully")
     expect(page).to have_content("Dodger Oliver")
     find('.glyphicon').click
-    expect(page).to have_content("Member was successfully deleted.")
+    expect(page).to have_content("Dodger Oliver was deleted successfully")
 
   end
 
@@ -98,7 +98,6 @@ feature "Membership" do
   end
 
   scenario "User cannot add a Member that is already there" do
-    skip
     visit projects_path
     expect(page).to have_content("Projects")
     click_on "YAY!"
@@ -108,19 +107,16 @@ feature "Membership" do
     select "Dodger Oliver", from: "membership_user_id"
     select "Owner", from: "membership_role"
     click_on "Add New Member"
-    expect(page).to have_content("Membership Created")
+    expect(page).to have_content("Dodger Oliver was added successfully")
     within '.table' do
       expect(page).to have_content("Dodger Oliver")
     end
-
     select "Dodger Oliver", from: "membership_user_id"
-    # within('.well') do
-    #   select "Member", from: "membership_role"
-    # end
-
+    within('.well') do
+      select "Member", from: "membership_role"
+    end
     click_on "Add"
     expect(page).to have_content("User has already been taken")
-
 
   end
 
