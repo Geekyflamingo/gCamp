@@ -32,6 +32,8 @@ feature "Comments" do
     fill_in  "comment_description", with: "My comment"
     click_on "Add Comment"
     expect(page).to have_content("My comment")
+    click_link "Tasks"
+    expect(page).to have_content("1")
 
 
   end

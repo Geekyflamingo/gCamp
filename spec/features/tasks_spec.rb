@@ -7,7 +7,7 @@ feature "Tasks" do
       name: "YAY!")
   end
 
-  scenario "User creates a Task and clicks on show" do
+  scenario "User creates a Task and clicks on task to go to show page" do
     visit projects_path
     expect(page).to have_content("Projects")
     click_on "YAY!"
@@ -22,8 +22,8 @@ feature "Tasks" do
     click_on("Projects",match: :first)
     click_on "YAY!"
     click_on "1 Task"
-    click_on "Show"
-    expect(page).to have_content("Extreme!")
+    click_on "Extreme!"
+    expect(page).to have_content("Comments")
 
   end
 
@@ -55,7 +55,7 @@ feature "Tasks" do
     expect(page).to have_content("YAY!")
     click_on "1"
     expect(page).to have_content("Tasks for YAY!")
-    click_on "Destroy"
+    find('.glyphicon').click
     expect(page).to have_no_content("Feed the dog")
 
   end
@@ -73,5 +73,4 @@ feature "Tasks" do
     click_on "Create Task"
     expect(page).to have_content("Description can't be blank")
   end
-
 end
