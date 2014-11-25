@@ -59,8 +59,8 @@ feature "Projects" do
     visit projects_path
     expect(page).to have_content("Write a song")
     click_on "Write a song"
-    expect(page).to have_content("Destroy")
-    click_on "Destroy"
+    expect(page).to have_content("Delete")
+    click_on "Delete"
     expect(page).to have_no_content("Write a song")
     expect(page).to have_content("Project was successfully deleted")
 
