@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%= csrf_meta_tags %>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>gCamp</title>
+  <title>gCamp</title>
 
-    <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'application' %>
 
-  </head>
+</head>
 
-  <body style= "padding-top:100px"<% if request.path == '/' %> class="full" <% end %>>
+<body style= "padding-top:100px"<% if request.path == '/' %> class="full" <% end %>>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-brand">
-          <%= link_to "gCamp", root_path %>
-        </div>
-        <ul class= "nav navbar-nav navbar-right">
-          <% if current_user %>
-            <li><%= link_to ("#{current_user.first_name} #{current_user.last_name}"),
-            user_path(current_user) %></li>
-            <li><%= link_to "Sign Out", signout_path %></li>
-          <% else %>
-            <li><%= link_to "Sign Up", signup_path %></li>
-            <li><%= link_to "Sign In", signin_path %></li>
-         <% end %>
-        </ul>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <%= link_to "gCamp", root_path %>
       </div>
+      <ul class= "nav navbar-nav navbar-right">
+        <% if current_user %>
+        <li><%= link_to ("#{current_user.first_name} #{current_user.last_name}"),
+        user_path(current_user) %></li>
+        <li><%= link_to "Sign Out", signout_path %></li>
+        <% else %>
+        <li><%= link_to "Sign Up", signup_path %></li>
+        <li><%= link_to "Sign In", signin_path %></li>
+        <% end %>
+      </ul>
     </div>
+  </div>
 
-    <div class= "container">
-      <% if notice %>
-        <div class= "alert alert-success text-center" role= "alert">
-          <strong><p> <%= notice %></p></strong>
+  <div class= "container">
+    <% if notice %>
+    <div class= "alert alert-success text-center" role= "alert">
+      <strong><p> <%= notice %></p></strong>
+    </div>
+    <% end %>
+    <%= yield %>
+  </div>
+
+  <hr>
+
+  <div class ="footer">
+    <footer class= "container">
+      <div>
+        <div class= "col-md-5">
+          <%= link_to "About |", about_path %> <%= link_to "Terms |", terms_path%> <%= link_to "FAQ |",
+          faq_path %> <%= link_to "Users |",
+          users_path %> <%= link_to "Projects", projects_path %>
         </div>
-      <% end %>
-      <%= yield %>
-    </div>
+        <div class= "col-md-offset-9">
+          <%= link_to "https://www.linkedin.com/profile/view?id=248387462&trk=nav_responsive_tab_profile" do %>
+          <%= image_tag("linked_in.jpg") %>
+          <%end%> |
 
-    <hr>
+          <%= link_to "https://github.com/Geekyflamingo" do %>
+          <%= image_tag("GitHub.png") %>
+          <%end%> |
 
-    <div class ="footer">
-      <footer class= "container">
-        <div>
-          <div class= "col-md-5">
-            <%= link_to "About |", about_path %> <%= link_to "Terms |", terms_path%> <%= link_to "FAQ |",
-            faq_path %> <%= link_to "Users |",
-            users_path %> <%= link_to "Projects", projects_path %>
-          </div>
-          <div class= "col-md-offset-9">
-            <%= link_to "https://www.linkedin.com/profile/view?id=248387462&trk=nav_responsive_tab_profile" do %>
-            <%= image_tag("linked_in.jpg") %>
-            <%end%> |
+          <%= link_to "https://twitter.com/Geekyflamingo" do %>
+          <%= image_tag("Twitter.png") %>
+          <%end%> |
 
-            <%= link_to "https://github.com/Geekyflamingo" do %>
-            <%= image_tag("GitHub.png") %>
-            <%end%> |
-
-            <%= link_to "https://twitter.com/Geekyflamingo" do %>
-            <%= image_tag("Twitter.png") %>
-            <%end%> |
-
-            <%= link_to "http://www.galvanize.it/school/" do %>
-            <%= image_tag("gschool.png") %>
-            <%end%>
-          </div>
+          <%= link_to "http://www.galvanize.it/school/" do %>
+          <%= image_tag("gschool.png") %>
+          <%end%>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
+  </div>
 
-     <%= javascript_include_tag 'application' %>
-  </body>
+  <%= javascript_include_tag 'application' %>
+</body>
 </html>

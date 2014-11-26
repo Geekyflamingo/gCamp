@@ -44,10 +44,10 @@ class TasksController < ApplicationController
 
   def create_comment
     comment_params = params.require(:comment).permit(
-        :user_id,
-        :task_id,
-        :description
-      )
+    :user_id,
+    :task_id,
+    :description
+    )
     if current_user
       @comment = @task.comments.new(params.require(:comment).merge({:user_id => current_user.id}).permit(:description, :user_id, :task_id))
       @comment.save
@@ -75,11 +75,11 @@ class TasksController < ApplicationController
 
   private
 
-    def set_task
-      @task = @project.tasks.find(params[:id])
-    end
+  def set_task
+    @task = @project.tasks.find(params[:id])
+  end
 
-    def task_params
-      params.require(:task).permit(:description, :complete, :due_date)
-    end
+  def task_params
+    params.require(:task).permit(:description, :complete, :due_date)
+  end
 end

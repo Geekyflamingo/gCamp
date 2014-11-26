@@ -1,9 +1,9 @@
 class MembershipsController < ApplicationController
-before_action do
-  @project = Project.find(params[:project_id])
-end
+  before_action do
+    @project = Project.find(params[:project_id])
+  end
 
-before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
   def index
     @membership = @project.memberships.new
@@ -44,11 +44,11 @@ before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
   def membership_params
     params.require(:membership).permit(
-      :user_id,
-      :project_id,
-      :role,
-      :first_name,
-      :last_name,
+    :user_id,
+    :project_id,
+    :role,
+    :first_name,
+    :last_name,
     )
   end
 
