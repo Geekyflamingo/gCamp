@@ -37,4 +37,22 @@ feature "Comments" do
 
 
   end
+
+  scenario "User should not be able to create a new comment on the tasks show page when not logged in." do
+    project = Project.create!(
+      name: "YAY!")
+
+    task = project.tasks.create!(
+      description: "Feed the dog" , complete: "false" , due_date: Date.today
+    )
+
+    visit project_tasks_path(project)
+    click_on "Feed the dog"
+    fill_in  "comment_description", with: "My comment"
+    click_on "Add Comment"
+    expect(page).to have_no_content("My comment")
+    
+
+
+  end
 end
