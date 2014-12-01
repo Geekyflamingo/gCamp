@@ -4,6 +4,7 @@ class TasksController < InternalController
   end
 
   before_action :set_task, only: [:show, :edit, :create_comment, :update, :destroy]
+  
 
   def index
 
@@ -82,4 +83,7 @@ class TasksController < InternalController
   def task_params
     params.require(:task).permit(:description, :complete, :due_date)
   end
+
+
+
 end
