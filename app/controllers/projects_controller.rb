@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < InternalController
 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
