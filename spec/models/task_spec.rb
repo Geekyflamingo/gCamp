@@ -14,7 +14,7 @@ describe Task do
 
   end
 
-  it 'validates that task date is vaild' do
+  it 'validates that task date is valid' do
 
     task = Task.new
     task.valid?
@@ -31,7 +31,7 @@ describe Task do
 
   end
 
-  it 'validates that task date is vaild in edit' do
+  it 'validates that task date is valid in edit' do
     task = Task.create!(description: "task", due_date: Date.today+7)
     task.due_date = Date.today-7
     task.valid?
