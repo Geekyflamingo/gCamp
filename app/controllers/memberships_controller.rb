@@ -4,7 +4,7 @@ class MembershipsController < InternalController
   end
 
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
-
+  before_action :tasks_id_match
   def index
     @membership = @project.memberships.new
     @memberships = @project.memberships.all

@@ -4,7 +4,7 @@ class TasksController < InternalController
   end
 
   before_action :set_task, only: [:show, :edit, :create_comment, :update, :destroy]
-  
+  before_action :tasks_id_match
 
   def index
 
