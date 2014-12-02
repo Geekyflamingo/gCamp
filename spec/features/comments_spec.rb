@@ -35,10 +35,9 @@ feature "Comments" do
     click_link "Tasks"
     expect(page).to have_content("1")
 
-
   end
 
-  scenario "User should not be able to create a new comment on the tasks show page when not logged in." do
+  scenario "User should not be able to go to task show page and make a new comment when not logged in." do
     project = Project.create!(
       name: "YAY!")
 
@@ -47,12 +46,8 @@ feature "Comments" do
     )
 
     visit project_tasks_path(project)
-    click_on "Feed the dog"
-    fill_in  "comment_description", with: "My comment"
-    click_on "Add Comment"
-    expect(page).to have_no_content("My comment")
-    
-
+    expect(page).to have_content("You must be logged in to access that action")
+    expect(page).to have_content("Sign into gCamp")
 
   end
 end
