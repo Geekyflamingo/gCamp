@@ -26,6 +26,9 @@ class ProjectsController < InternalController
   end
 
   def edit
+    if owner?.empty?
+      render 'public/404', status: :not_found, layout: false
+    end
   end
 
   def update
@@ -38,9 +41,13 @@ class ProjectsController < InternalController
   end
 
   def destroy
-    @project.destroy
-    redirect_to projects_path, notice: 'Project was successfully deleted.'
-  end
+    if owner?.empty?
+      render 'public/404', status: :not_found, layout: false
+    else
+      @project.destroy
+      redirect_to projects_path, notice: 'Project was successfully deleted.'
+    end
+ end
 
   private
 

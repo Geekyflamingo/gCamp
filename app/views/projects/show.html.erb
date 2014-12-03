@@ -1,6 +1,9 @@
 <div class= "page-header">
   <div class= "pull-right">
-    <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info" %>
+    <% if @project.memberships.where(role: 'Owner', user_id: current_user) %>
+      <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info" %>
+    <%end%>
+
 
   </div>
   <h1><strong><%= @project.name %></strong></h1>
@@ -17,7 +20,7 @@
 
 <%= link_to (pluralize(@project.memberships.count,"Member")), project_memberships_path(@project) %>
 </div>
-
+<% if @project.memberships.where(role: 'Owner', user_id: current_user) %>
 <div class="well form-inline col-sm-7">
     <div class="form-group">
       <strong>Delete Project</strong>
@@ -27,3 +30,4 @@
           class: "btn btn-danger" %>
     </div>
   </div>
+<%end%>
