@@ -18,12 +18,17 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to ("#{user.first_name} #{user.last_name}"), user_path(user) %> </td>
+        <% if user.id == current_user.id %>
         <td><%= mail_to(user.email) %></td>
         <td>
           <div class= "pull-right">
             <%= link_to 'Edit', edit_user_path(user), class:"btn btn-info" %>
           </div>
         </td>
+        <%else%>
+        <td></td>
+        <td></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

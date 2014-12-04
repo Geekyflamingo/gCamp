@@ -1,5 +1,6 @@
 class UsersController < InternalController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -49,6 +50,6 @@ class UsersController < InternalController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
-  
+
 
 end

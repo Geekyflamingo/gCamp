@@ -15,7 +15,9 @@
   <%= @user.last_name %>
 </p>
 
+<% if @user.id == current_user.id %>
 <p>
   <strong>Email:</strong>
   <%= mail_to(@user.email) %>
 </p>
+<%end%>

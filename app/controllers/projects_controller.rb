@@ -1,7 +1,7 @@
 class ProjectsController < InternalController
-
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :project_id_match, only: [:show, :edit, :update, :destroy]
+  before_action :project_id_match, except: [:index, :new, :create]
+
 
   def index
     @projects = Project.all

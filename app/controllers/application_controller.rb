@@ -15,14 +15,21 @@ class ApplicationController < ActionController::Base
     @project.memberships.where(role: 'Member', user_id: current_user)
   end
 
+  def authorize_user
+    @user = User.find(params[:id])
+    unless current_user == @user
+      raise AccessDenied
+    end
+  end
+  helper_method :authorize_user
   helper_method :current_user
   helper_method :owner?
   helper_method :member?
-  
+
   class AccessDenied < StandardError
   end
 
-rescue_from AccessDenied, with: :render_404
+  rescue_from AccessDenied, with: :render_404
 
   def render_404
     render 'public/404', status: :not_found, layout: false
@@ -36,6 +43,7 @@ rescue_from AccessDenied, with: :render_404
 
   def project_id_match
     project_list = Membership.where(user_id: current_user.id).pluck(:project_id)
+    @project = Project.find(params[:id])
     unless project_list.include?(@project.id)
       raise AccessDenied
     end
@@ -47,5 +55,5 @@ rescue_from AccessDenied, with: :render_404
       raise AccessDenied
     end
   end
-
+  
 end
