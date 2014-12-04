@@ -36,8 +36,10 @@ class MembershipsController < InternalController
   end
 
   def destroy
-    @membership.destroy
-    redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was deleted successfully."
+    if @membership.user.id == current_user.id || !owner?.empty?
+      @membership.destroy
+      redirect_to projects_path, notice: "#{@membership.user.full_name} was deleted successfully."
+  end
   end
   private
 
@@ -55,9 +57,13 @@ class MembershipsController < InternalController
     )
   end
 
+  def current_user_has_membership
+    @membership.user.id == current_user.id || !owner?.empty?
+  end
+
   def not_owner_render_404
     if owner?.empty?
-      render 'public/404', status: :not_found, layout: false
+      raise AccessDenied
     end
   end
 
