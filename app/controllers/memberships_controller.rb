@@ -5,6 +5,9 @@ class MembershipsController < InternalController
 
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
   before_action :tasks_id_match
+  # before_action :current_user_member?, only: [:destroy]
+  before_action :not_owner_render_404, only: [:new, :create, :update]
+
   def index
     @membership = @project.memberships.new
     @memberships = @project.memberships.all
@@ -50,6 +53,12 @@ class MembershipsController < InternalController
     :first_name,
     :last_name,
     )
+  end
+
+  def not_owner_render_404
+    if owner?.empty?
+      render 'public/404', status: :not_found, layout: false
+    end
   end
 
 end

@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 describe ProjectsController do
-
+  describe "#index" do
+    it "does not allow non-logged in users to view" do
+      get :index
+      expect(response).to redirect_to(signin_path)
+    end
+  end
   describe "#edit" do
     before do
       @user = User.create!(
-      first_name: "Betty",
-      last_name: "Boop",
-      password: "boop",
-      email: "betty@example.com"
+        first_name: "Betty",
+        last_name: "Boop",
+        password: "boop",
+        email: "betty@example.com"
       )
       @project = Project.create!(
       name: "Movie"
