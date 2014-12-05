@@ -54,7 +54,7 @@
           <%end%>
           </td>
           <td>
-            <% if membership.user.id == current_user.id || !owner?.empty? %>
+            <% if @project.memberships.where(role: 'Owner').count > 1 || membership.user.id == current_user.id || !owner?.empty? %>
             <%= link_to "", project_membership_path(@project, membership), method: :delete,
             data: {confirm: "Are you Sure?"}, class: "glyphicon glyphicon-remove" %>
             <% end %>

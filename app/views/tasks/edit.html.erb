@@ -1,12 +1,14 @@
-<div class="Edit">
-
-  <ol class="breadcrumb">
-    <li><a><%= link_to "Tasks", project_tasks_path %> </a></li>
-    <li><a><%= link_to @task.description, project_task_path(@project, @task) %></a></li>
-    <li class= "active">Edit</li>
-  </ol>
-
+<div class="page-header">
   <h1>Editing task</h1>
+</div>
+
+<ol class="breadcrumb">
+  <li><a><%= link_to "Projects", projects_path %> </a></li>
+  <li><a><%= link_to @project.name, project_path(@project) %> </a></li>
+  <li><a><%= link_to "Tasks", project_tasks_path %> </a></li>
+  <li><a><%= link_to @task.description, project_task_path(@project, @task) %></a></li>
+  <li class= "active">Edit</li>
+  </ol>
 
   <%= render 'form', button_name: "Update Task" %>
 

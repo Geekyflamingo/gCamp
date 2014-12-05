@@ -55,5 +55,6 @@ class ApplicationController < ActionController::Base
       raise AccessDenied
     end
   end
+
   
 end
