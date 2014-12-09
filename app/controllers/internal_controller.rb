@@ -1,6 +1,7 @@
 class InternalController < ApplicationController
   before_action :ensure_logged_in_user
   before_action :projects
+  before_action :admin?
 
   private
   def ensure_logged_in_user

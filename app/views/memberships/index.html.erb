@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<% unless owner?.empty? %>
+<% if admin? || !owner?.empty? || !member?%>
 <div class="well form-inline col-md-5 ">
   <%= form_for([@project, @membership], html: {  class: "form-horizonal" }) do |f| %>
     <div class ="form-group">
@@ -54,7 +54,7 @@
           <%end%>
           </td>
           <td>
-            <% if @project.memberships.where(role: 'Owner').count > 1 || membership.user.id == current_user.id || !owner?.empty? %>
+            <% if @project.memberships.where(role: 'Owner').count > 1 || membership.user.id == current_user.id || admin? || !owner?.empty? %>
             <%= link_to "", project_membership_path(@project, membership), method: :delete,
             data: {confirm: "Are you Sure?"}, class: "glyphicon glyphicon-remove" %>
             <% end %>
