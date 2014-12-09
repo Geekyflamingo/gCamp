@@ -50,6 +50,7 @@ class UsersController < InternalController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
   end
 
+  
 
 
 end

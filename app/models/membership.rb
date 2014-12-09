@@ -7,7 +7,11 @@ class Membership < ActiveRecord::Base
 
   before_destroy :cannot_delete_last_owner
 
-  private
+  def cannot_delete_last_owner
+    if owners.count == 1 && self.role == 'Owner'
+      return false
+    end
+  end
 
   def owners
     project.memberships.where(role: 'Owner')
@@ -17,12 +21,5 @@ class Membership < ActiveRecord::Base
     project.memberships.where(role: 'Member')
   end
 
-
-  def cannot_delete_last_owner
-    if owners.count == 1 && self.role == 'Owner'
-      return false
-    end
-  end
-
-
+  private
 end

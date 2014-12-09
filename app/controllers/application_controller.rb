@@ -62,5 +62,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def members_on_same_project_can_see_emails
+    current_user_projects = current_user.memberships.where(project_id: Project.all).pluck(:project_id)
+  end
+
 
 end
