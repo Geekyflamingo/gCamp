@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
 
   def authorize_user
     @user = User.find(params[:id])
+    return true if admin?
     unless current_user == @user
       raise AccessDenied
     end
