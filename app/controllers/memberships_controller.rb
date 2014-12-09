@@ -74,6 +74,7 @@ class MembershipsController < InternalController
   end
 
   def not_owner_render_404
+    return false if admin?
     if owner?.empty?
       raise AccessDenied
     end
