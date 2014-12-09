@@ -26,7 +26,7 @@ class ProjectsController < InternalController
   end
 
   def edit
-    if owner?.empty?
+    unless owner?.present? || admin?
       render 'public/404', status: :not_found, layout: false
     end
   end
@@ -41,7 +41,7 @@ class ProjectsController < InternalController
   end
 
   def destroy
-    if owner?.empty?
+    unless owner?.present? || admin?
       render 'public/404', status: :not_found, layout: false
     else
       @project.destroy

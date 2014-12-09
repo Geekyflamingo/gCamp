@@ -49,14 +49,17 @@
   <%end%>
 
   <% if current_user.admin == true %>
-    <div class= "form-group">
-      <%= f.label :admin, "Admin?", class: "col-sm-2 control-label" %>
-      <div class="col-sm-4">
-      <%= f.check_box :admin, class: "form-control" %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label><strong><%= f.check_box :admin %>Admin?</strong></label>
       </div>
     </div>
+  </div>
   <% end %>
-  
+
+
+
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-5"> <br>
           <%= f.submit class: "btn btn-primary" %>

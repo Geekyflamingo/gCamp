@@ -1,6 +1,6 @@
 <div class= "page-header">
   <div class= "pull-right">
-    <% unless admin? || @project.memberships.where(role: 'owner', user_id: current_user).empty? %>
+    <% if owner?.present? || admin? %>
       <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info" %>
     <%end%>
 
@@ -20,7 +20,7 @@
 
 <%= link_to (pluralize(@project.memberships.count,"Member")), project_memberships_path(@project) %>
 </div>
- <% unless admin? || @project.memberships.where(role: 'owner', user_id: current_user).empty? %>
+ <% if owner?.present? || admin? %>
 <div class="well form-inline col-sm-7">
     <div class="form-group">
       <strong>Delete Project</strong>
