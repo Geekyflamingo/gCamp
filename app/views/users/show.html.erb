@@ -24,10 +24,12 @@
 </p>
 <%end%>
 
+<% if @user.tracker.present? %>
 <p>
   <strong> Pivotal Tracker Token:</strong>
-  <%= @user.tracker%>
+  <%= @user.tracker[0..3]%><%= "*" * (@user.tracker.length-4) %>
 </p>
+<% end %>
 
 <% if admin? %>
 <p><strong> Admin:</strong>

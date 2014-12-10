@@ -28,16 +28,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_back_after_authentication
-    redirect_to(session[:first_url] || projects_path)
-    session.delete(:first_url)
-  end
-
   def store_url
     if request.get?
       session[:first_url] = request.url
     end
   end
+
+  def redirect_back_after_authentication
+    redirect_to(session[:first_url] || projects_path)
+    session.delete(:first_url)
+  end
+
 
   helper_method :authorize_user
   helper_method :current_user
