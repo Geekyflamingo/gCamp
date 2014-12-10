@@ -17,17 +17,20 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to ("#{user.first_name} #{user.last_name}"), user_path(user) %> </td>
+          <td><%= link_to ("#{user.first_name} #{user.last_name}"), user_path(user) %> </td>
+        <% if current_user.shared_project?(user) || admin? %>
+          <td><%= mail_to(user.email) %></td>
+        <% end %>
+
         <% if current_user.id == user.id || admin? %>
-        <td><%= mail_to(user.email) %></td>
-        <td>
-          <div class= "pull-right">
-            <%= link_to 'Edit', edit_user_path(user), class:"btn btn-info" %>
-          </div>
-        </td>
+          <td>
+            <div class= "pull-right">
+              <%= link_to 'Edit', edit_user_path(user), class:"btn btn-info" %>
+            </div>
+          </td>
         <%else%>
-        <td></td>
-        <td></td>
+          <td></td>
+          <td></td>
         <%end%>
       </tr>
     <% end %>

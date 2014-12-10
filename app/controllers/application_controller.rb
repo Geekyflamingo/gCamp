@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
+
     User.find_by(id: session[:user_id])
   end
 
@@ -26,11 +27,24 @@ class ApplicationController < ActionController::Base
       raise AccessDenied
     end
   end
+
+  def redirect_back_after_authentication
+    redirect_to(session[:first_url] || projects_path)
+    session.delete(:first_url)
+  end
+
+  def store_url
+    if request.get?
+      session[:first_url] = request.url
+    end
+  end
+
   helper_method :authorize_user
   helper_method :current_user
   helper_method :owner?
   helper_method :member?
   helper_method :admin?
+
 
   class AccessDenied < StandardError
   end

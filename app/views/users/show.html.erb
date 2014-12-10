@@ -17,7 +17,7 @@
   <%= @user.last_name %>
 </p>
 
-<% if admin? || @user.id == current_user.id %>
+<% if current_user.shared_project?(@user) || admin? || @user.id == current_user.id %>
 <p>
   <strong>Email:</strong>
   <%= mail_to(@user.email) %>
@@ -26,7 +26,7 @@
 
 <p>
   <strong> Pivotal Tracker Token:</strong>
-  <%= @user.tracker %>
+  <%= @user.tracker%>
 </p>
 
 <% if admin? %>
