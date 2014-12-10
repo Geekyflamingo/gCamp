@@ -24,6 +24,11 @@
 </p>
 <%end%>
 
+<p>
+  <strong> Pivotal Tracker Token:</strong>
+  <%= @user.tracker %>
+</p>
+
 <% if admin? %>
 <p><strong> Admin:</strong>
     <%= @user.admin %>
