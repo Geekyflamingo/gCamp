@@ -1,10 +1,12 @@
 class ProjectsController < InternalController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :project_id_match, except: [:index, :new, :create]
+  before_action :project_id_match, except: [:index, :new, :create, :tracker_stories]
 
 
   def index
     @projects = Project.all
+    tracker_api = TrackerAPI.new
+    @tracker_projects = tracker_api.projects(current_user.tracker)
   end
 
   def new
@@ -48,6 +50,13 @@ class ProjectsController < InternalController
       redirect_to projects_path, notice: 'Project was successfully deleted.'
     end
  end
+
+  def tracker_stories
+    tracker_api = TrackerAPI.new
+    @tracker_projects = tracker_api.projects(current_user.tracker)
+    @tracker_stories = tracker_api.stories(params[:tracker_id], current_user.tracker)
+    @tracker_project = tracker_api.project(params[:tracker_id], current_user.tracker)
+  end
 
   private
 

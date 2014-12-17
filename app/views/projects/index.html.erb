@@ -1,11 +1,6 @@
-<div class= "page-header">
-  <div class= "pull-right">
-    <%= link_to 'Create Project', new_project_path, class:"btn btn-info" %>
-  </div>
-
-  <h1>Projects</h1>
-</div>
-
+<%= page_header "Projects" do %>
+  <%= link_to 'Create Project', new_project_path, class:"btn btn-info" %>
+<% end %>
 
 <table class = "table">
   <thead>
@@ -39,3 +34,22 @@
       <% end %>
   </tbody>
 </table>
+
+<% if current_user.tracker.present? || admin? %>
+  <%= page_header "Pivotal Tracker Projects" do %>
+  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tracker_projects.each do |project| %>
+      <tr>
+        <td><%= link_to project[:name], tracker_projects_path(tracker_id: project[:id]) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>

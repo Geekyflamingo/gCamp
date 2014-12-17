@@ -47,7 +47,6 @@ describe ProjectsController do
       expect(response.status).to eq(200)
     end
     it "allows admins" do
-      skip
       Membership.create!(
       user: @user,
       project: @project,
@@ -75,7 +74,6 @@ describe ProjectsController do
   end
 
   it "does not allow non-members" do
-    skip
     session[:user_id] = @user.id
     count = Project.count
     delete :destroy, id: @project.id
@@ -85,7 +83,6 @@ describe ProjectsController do
   end
 
   it "does not allow project members" do
-    skip
     Membership.create!(
       user: @user,
       project: @project,
@@ -98,22 +95,20 @@ describe ProjectsController do
     expect(count).to eq(Project.count)
   end
 
-  it "allows project Owners" do
-    skip
-    Membership.create!(
-    user: @user,
-    project: @project,
-    role: 'Owner'
-    )
+  it "allows owners to delete" do
+    @membership = create_membership(@project, @user, "Owner")
+    @membership3 = create_membership(@project, @betty, "wner")
+
     session[:user_id] = @user.id
     count = Project.count
+
     delete :destroy, id: @project.id
+
+    expect(Project.count).to eq(count - 1)
     expect(response).to redirect_to(projects_path)
-    expect(count).to eq(Project.count -1)
   end
 
   it "allows admin" do
-    skip
     Membership.create!(
     user: @user,
     project: @project,

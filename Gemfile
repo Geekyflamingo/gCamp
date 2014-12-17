@@ -39,6 +39,8 @@ gem 'kaminari'
 
  gem 'faker'
 
+ gem 'faraday', '~> 0.9.0'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
