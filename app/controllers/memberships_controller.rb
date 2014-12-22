@@ -32,7 +32,8 @@ class MembershipsController < InternalController
     if @membership.update(membership_params)
       redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was updated successfully."
     else
-      render :index
+      redirect_to project_memberships_path,
+      notice: "You can't change the membership on the last owner."
     end
   end
 

@@ -120,6 +120,5 @@ describe ProjectsController do
     expect(response).to redirect_to(projects_path)
     expect(count).to eq(Project.count -1)
   end
-
   end
 end

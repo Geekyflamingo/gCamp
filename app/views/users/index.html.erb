@@ -1,7 +1,9 @@
 <div class= "page-header">
-  <div class= "pull-right">
-    <%= link_to 'Create User', new_user_path, class:"btn btn-primary" %>
-  </div>
+  <% if admin? %>
+    <div class= "pull-right">
+      <%= link_to 'Create User', new_user_path, class:"btn btn-primary" %>
+    </div>
+  <% end %>
   <h1>Users</h1>
 </div>
 
@@ -20,8 +22,9 @@
           <td><%= link_to ("#{user.first_name} #{user.last_name}"), user_path(user) %> </td>
         <% if current_user.shared_project?(user) || admin? %>
           <td><%= mail_to(user.email) %></td>
-        <% end %>
-
+        <% else %>
+          <td></td>
+          <% end %>
         <% if current_user.id == user.id || admin? %>
           <td>
             <div class= "pull-right">
@@ -29,7 +32,6 @@
             </div>
           </td>
         <%else%>
-          <td></td>
           <td></td>
         <%end%>
       </tr>

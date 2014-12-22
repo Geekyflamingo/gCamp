@@ -6,11 +6,20 @@ class Membership < ActiveRecord::Base
   validates :user_id, presence: :true, uniqueness: { scope: :project_id }
 
   before_destroy :cannot_delete_last_owner
+  before_update :cannot_update_last_owner
 
   def cannot_delete_last_owner
     if owners.count == 1 && self.role == 'Owner'
       return false
     end
+  end
+
+  def cannot_update_last_owner
+    if owners.count > 1
+      return true
+    elsif owners.count == 1 && role == 'Member'
+      return false
+      end
   end
 
   def owners
