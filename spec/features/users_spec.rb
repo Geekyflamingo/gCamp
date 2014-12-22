@@ -8,7 +8,8 @@ feature "Users" do
     last_name: "Dean",
     email: "dean@email.com",
     password: "pass",
-    password_confirmation: "pass"
+    password_confirmation: "pass",
+    admin: true
     )
     User.create!(
     first_name: "Betty",
@@ -29,7 +30,7 @@ feature "Users" do
 
     visit users_path
     expect(page).to have_content("James Dean")
-    within'.table tr', text: "James" do
+    within'.table tr', text: "Betty" do
       click_on "Edit"
     end
     fill_in "First Name", with: "Frank"
@@ -37,7 +38,7 @@ feature "Users" do
     fill_in "Email", with: "blueeyes@example.com"
     click_on "Update User"
     expect(page).to have_content("Frank")
-    expect(page).to have_no_content("James")
+    expect(page).to have_no_content("Betty")
 
   end
 
