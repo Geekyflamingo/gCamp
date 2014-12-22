@@ -3,7 +3,7 @@ def create_user(overrides = {})
   {
     first_name: "James",
     last_name: "Dean",
-    email: "dean@email.com",
+    email: "dean@example.com",
     password: "pass",
     admin: false
   }.merge(overrides)
