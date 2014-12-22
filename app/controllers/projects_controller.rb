@@ -52,10 +52,14 @@ class ProjectsController < InternalController
  end
 
   def tracker_stories
-    tracker_api = TrackerAPI.new
-    @tracker_projects = tracker_api.projects(current_user.tracker)
-    @tracker_stories = tracker_api.stories(params[:tracker_id], current_user.tracker)
-    @tracker_project = tracker_api.project(params[:tracker_id], current_user.tracker)
+    unless present?
+      render 'public/404', status: :not_found, layout: false
+    else
+      tracker_api = TrackerAPI.new
+      @tracker_projects = tracker_api.projects(current_user.tracker)
+      @tracker_stories = tracker_api.stories(params[:tracker_id], current_user.tracker)
+      @tracker_project = tracker_api.project(params[:tracker_id], current_user.tracker)
+    end  
   end
 
   private
