@@ -57,8 +57,8 @@ feature "Membership" do
     expect(page).to have_content("2 Members")
   end
 
-  scenario "User wants to edit a Member" do
-    skip
+  scenario "User wants to edit a last owner to Member" do
+
     visit projects_path
     expect(page).to have_content("Projects")
     within '.dropdown' do
@@ -73,7 +73,7 @@ feature "Membership" do
     end
     click_on "Update"
     save_and_open_page
-    expect(page).to have_content("Dodger Oliver was updated successfully")
+    expect(page).to have_content("You can't change the membership on the last owner.")
     expect(page).to have_content("Member")
   end
 

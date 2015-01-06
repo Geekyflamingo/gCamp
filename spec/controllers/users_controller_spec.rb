@@ -93,7 +93,6 @@ describe UsersController do
     end
 
     it "does not allow users to create others" do
-      skip
       session[:user_id] = @member.id
       password = 'password'
 

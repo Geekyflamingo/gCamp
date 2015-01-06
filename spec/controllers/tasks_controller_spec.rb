@@ -311,58 +311,39 @@ describe TasksController do
     end
   end
 
+
   describe "#destroy" do
-    it "doesn't allow non-project members to create" do
-      skip
+    it "prevents non-members from deleting tasks" do
       session[:user_id] = @member
       @task3 = create_task(@admin_project)
 
       post :create, project_id: @admin_project.id
+      delete :destroy, project_id: @admin_project.id, id: @task3.id
       expect(response.status).to eq(404)
     end
 
-    it "does allow project members to create" do
-      skip
-      session[:user_id] = @member
+    it "does allow project members to delete" do
 
+      session[:user_id] = @member
       post :create,  project_id: @project.id, task: {description: "foo"}
       task = Task.last
       expect(task.project_id).to eq(@project.id)
       expect(task.description).to eq("foo")
+      delete :destroy, project_id: @project.id, id: task.id
+      expect(response.status).to eq(302)
     end
 
-    it "doesn't allow non-project owners to create" do
-      skip
-      session[:user_id] = @owner
-      @task3 = create_task(@admin_project)
+    it "does allow admins to delete" do
 
-      post :create, project_id: @admin_project.id
-      expect(response.status).to eq(404)
-    end
-
-    it "does allow project owners to create" do
-      skip
-      session[:user_id] = @owner
-      @task = create_task(@project)
-
-      post :create, project_id: @project.id, task: {description: "foo"}
-      task = Task.last
-      expect(task.project_id).to eq(@project.id)
-      expect(task.description).to eq("foo")
-    end
-
-    it "does allow admins to create" do
-      skip
       session[:user_id] = @admin
       @task2 = create_task(@admin_project)
-
-      post :create, project_id: @project.id, task: {description: "foo"}
+      post :create, project_id: @admin_project.id, task: {description: "foo"}
       task = Task.last
-      expect(task.project_id).to eq(@project.id)
       expect(task.description).to eq("foo")
+      delete :destroy, project_id: @admin_project.id, id: task.id
+      expect(response.status).to eq(302)
     end
 
   end
-
 
 end
